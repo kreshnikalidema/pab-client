@@ -1,9 +1,6 @@
-import React from 'react';
-import { DraggableGrid } from '../../../../components/draggable-grid';
 import * as Icon from '@mui/icons-material';
-import { SidebarContainer } from './sidebar-container';
 
-const items = [
+export const items = [
   { label: '1 Section', icon: Icon.ViewColumn },
   { label: '1/2 Section', icon: Icon.ViewColumn },
   { label: '1/3 Section', icon: Icon.ViewColumn },
@@ -21,11 +18,3 @@ const items = [
   { label: 'Grid items', icon: Icon.ViewModule },
   { label: 'List items', icon: Icon.List },
 ];
-
-export const Sidebar: React.FC = () => {
-  return (
-    <SidebarContainer>
-      <DraggableGrid items={items} />
-    </SidebarContainer>
-  );
-};

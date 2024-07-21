@@ -1,8 +1,9 @@
 import { Box, styled } from '@mui/material';
 
-export const WorkspaceContainer = styled(Box)(({ theme }) => ({
+export const WorkspaceContainer = styled(Box)(() => ({
   display: 'flex',
-  flex: 1,
   flexDirection: 'column',
-  padding: theme.spacing(3),
+  flexGrow: 1,
+  height: '100%',
+  width: '100%',
 }));

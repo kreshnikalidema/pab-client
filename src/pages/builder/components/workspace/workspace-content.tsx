@@ -11,8 +11,8 @@ export const WorkspaceContent = observer<WorkspaceContentProps>((props) => {
   const { container } = props;
 
   const onDrop = React.useCallback((item: any) => {
-    console.log('WorkspaceContent', item)
-  }, [])
+    console.log('WorkspaceContent', item);
+  }, []);
 
   return (
     <DroppableZone onDrop={onDrop}>
