@@ -23,7 +23,7 @@ export const DraggableItem: React.FC<DraggableItemProps> = (props) => {
 
   const [{ isDragging }, drag, preview] = useDrag(() => ({
     type: 'COMPONENT',
-    item: { label: item.label },
+    item: item,
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),

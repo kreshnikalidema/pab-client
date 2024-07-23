@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
     <StyledAppBar position="fixed">
       <Toolbar>
         <Typography variant="h6" noWrap>
-        POWER APPS BUILDER
+          POWER APPS BUILDER
         </Typography>
       </Toolbar>
     </StyledAppBar>

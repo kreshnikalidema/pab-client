@@ -1,19 +1,14 @@
 import * as React from 'react';
 import { WorkspaceContainer } from './workspace-container';
 import { WorkspaceContent } from './workspace-content';
+import { createContainer } from '../../create-container';
 
-import { VerticalContainer } from '../../state/components/vertical-container';
-
-const verticalContainer = new VerticalContainer({
-  Fill: 'red',
-  FillPortions: 1,
-  Children: [],
-});
+const container = createContainer();
 
 export const Workspace: React.FC = () => {
   return (
     <WorkspaceContainer>
-      <WorkspaceContent container={verticalContainer} />
+      <WorkspaceContent container={container} />
     </WorkspaceContainer>
   );
 };
