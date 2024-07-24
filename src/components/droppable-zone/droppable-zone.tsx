@@ -5,10 +5,11 @@ import { DroppableContainer } from './droppable-container';
 interface DroppableZoneProps<T = unknown> {
   children?: React.ReactNode;
   onDrop?: (item: T) => void;
+  style: any;
 }
 
 export const DroppableZone = <T,>(props: DroppableZoneProps<T>) => {
-  const { onDrop, children } = props;
+  const { onDrop, children, style } = props;
 
   const [{ isOver }, drop] = useDrop({
     accept: 'COMPONENT',
@@ -25,7 +26,7 @@ export const DroppableZone = <T,>(props: DroppableZoneProps<T>) => {
   });
 
   return (
-    <DroppableContainer ref={drop} isOver={isOver}>
+    <DroppableContainer ref={drop} isOver={isOver} style={style}>
       {children}
     </DroppableContainer>
   );

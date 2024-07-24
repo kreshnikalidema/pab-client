@@ -38,4 +38,9 @@ export const styleMapper: StyleMapper = {
   LayoutMaxHeight: (value) => ({ maxHeight: `${value as number}px` }),
   LayoutMaxWidth: (value) => ({ maxWidth: `${value as number}px` }),
   FillPortions: (value) => ({ flex: value as number, display: 'flex' }),
+  DropShadow: (value) => ({ boxShadow: `0 0 10px ${value}` }),
+  RadiusTopLeft: (value) => ({ borderTopLeftRadius: `${value}px` }),
+  RadiusTopRight: (value) => ({ borderTopRightRadius: `${value}px` }),
+  RadiusBottomLeft: (value) => ({ borderBottomLeftRadius: `${value}px` }),
+  RadiusBottomRight: (value) => ({ borderBottomRightRadius: `${value}px` }),
 };

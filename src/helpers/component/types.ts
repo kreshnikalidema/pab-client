@@ -65,6 +65,12 @@ export interface StyleProps {
   LayoutMaxHeight?: number;
   LayoutMaxWidth?: number;
   FillPortions?: number;
+
+  DropShadow?: string;
+  RadiusTopLeft?: number;
+  RadiusTopRight?: number;
+  RadiusBottomLeft?: number;
+  RadiusBottomRight?: number;
 }
 
 export type StyleMapper = {

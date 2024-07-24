@@ -25,35 +25,113 @@ export interface IVerticalContainer {
   FillPortions?: number;
 }
 
+enum DropShadow {
+  None,
+  Small,
+  Medium,
+  Large,
+}
+
+enum LayoutAlignItems {
+  Center,
+  Stretch,
+  FlexStart,
+  FlexEnd,
+  Baseline,
+}
+
+enum LayoutJustifyContent {
+  Start,
+  End,
+  Center,
+  SpaceBetween,
+  SpaceAround,
+  SpaceEvenly,
+}
+
+enum LayoutMode {
+  Auto,
+  Fixed,
+  Stretch,
+}
+
+enum Font {
+  LatoBlack,
+  Arial,
+  Helvetica,
+  TimesNewRoman,
+  Verdana,
+}
+
+enum FontWeight {
+  Light,
+  Regular,
+  Semibold,
+  Bold,
+}
+
 export function createContainer() {
-  const component = new Component<IVerticalContainer>({
+  const component = new Component<any>({
     Fill: 'red',
     FillPortions: 1,
   });
+
+  component.children = [];
 
   return component;
 }
 
+export enum LayoutDirection {
+  ROW = 'row',
+  COLUMN = 'column',
+}
+
 export function createContainer2() {
-  const component = new Component<IVerticalContainer>({
-    Fill: 'red',
+  const leftComponent = new Component({
+    // DropShadow: DropShadow.None,
+    LayoutAlignItems: LayoutAlignItems.Stretch,
+    LayoutGap: 10,
+    LayoutJustifyContent: LayoutJustifyContent.Start,
+    LayoutMode: LayoutMode.Auto,
+    RadiusBottomLeft: 0,
+    RadiusBottomRight: 0,
+    RadiusTopLeft: 0,
+    RadiusTopRight: 0,
     FillPortions: 1,
+    Fill: "blue",
   });
 
-  component.children = [
-    new Component<IVerticalContainer>({
-      Fill: 'blue',
-      FillPortions: 1,
-    }),
-    new Component<IVerticalContainer>({
-      Fill: 'green',
-      FillPortions: 1,
-    }),
-    new Component<IVerticalContainer>({
-      Fill: 'pink',
-      FillPortions: 1,
-    }),
-  ];
+  const rightComponent = new Component({
+    // DropShadow: DropShadow.None,
+    LayoutAlignItems: LayoutAlignItems.Stretch,
+    LayoutGap: 10,
+    LayoutJustifyContent: LayoutJustifyContent.End,
+    // LayoutMinHeight: 0,
+    // LayoutMinWidth: 0,
+    LayoutMode: LayoutMode.Auto,
+    RadiusBottomLeft: 0,
+    RadiusBottomRight: 0,
+    RadiusTopLeft: 0,
+    RadiusTopRight: 0,
+    FillPortions: 1,
+    Fill: "red",
+  });
 
-  return component
+  const mainComponent = new Component<any>({
+    // DropShadow: DropShadow.None,
+    FillPortions: 1,
+    // Height: 60,
+    LayoutAlignItems: LayoutAlignItems.Center,
+    // LayoutMinWidth: 0,
+    LayoutMode: LayoutMode.Auto,
+    RadiusBottomLeft: 0,
+    RadiusBottomRight: 0,
+    RadiusTopLeft: 0,
+    RadiusTopRight: 0,
+    Fill: "green",
+  });
+
+  mainComponent.children = [leftComponent, rightComponent];
+
+  return mainComponent;
 }

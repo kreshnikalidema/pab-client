@@ -12,7 +12,8 @@ export function transformToStyles(props: StyleProps): React.CSSProperties {
       if (value !== undefined) {
         const mapperFunction = styleMapper[k];
         if (mapperFunction) {
-          Object.assign(styles, mapperFunction(value as any));
+          // @ts-ignore
+          Object.assign(styles, mapperFunction(value));
         }
       }
     }
