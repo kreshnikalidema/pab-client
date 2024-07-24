@@ -34,6 +34,6 @@ export class Component<T = {}> {
   }
 
   get styles() {
-    return transformToStyles(this.properties as never);
+    return transformToStyles(this.properties);
   }
 }

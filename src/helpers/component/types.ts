@@ -1,5 +1,14 @@
 import { CSSProperties } from 'react';
 
+export type Properties<T> = {
+  [K in keyof T]?: T[K];
+};
+
+export type StyleMapper<T> = {
+  [K in keyof T]: (value: T[K]) => CSSProperties;
+};
+
+
 export enum BorderStyle {
   None = 'None',
   Solid = 'Solid',
@@ -77,6 +86,3 @@ export interface StyleProps {
   Y: number;
 }
 
-export type StyleMapper = {
-  [K in keyof StyleProps]: (value: StyleProps[K]) => CSSProperties;
-};

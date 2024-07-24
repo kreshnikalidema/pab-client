@@ -15,7 +15,7 @@ import {
   StyleMapper,
 } from '../types';
 
-export const styleMapper: StyleMapper = {
+export const styleMapper: StyleMapper<{}> = {
   BorderColor: (value: string) => ({ borderColor: value }),
   BorderStyle: (value: BorderStyle) => ({ borderStyle: value.toLowerCase() }),
   BorderThickness: (value: number) => ({ borderWidth: `${value}px` }),

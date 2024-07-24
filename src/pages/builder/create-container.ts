@@ -53,7 +53,7 @@ export enum LayoutDirection {
 }
 
 export function createContainer2() {
-  const leftComponent = new Component({
+  const leftComponent = new Component<IVerticalContainerProperties>({
     // DropShadow: DropShadow.None,
     LayoutAlignItems: LayoutAlignItems.Stretch,
     LayoutGap: 10,
@@ -62,7 +62,7 @@ export function createContainer2() {
     RadiusBottomRight: 0,
     RadiusTopLeft: 0,
     RadiusTopRight: 0,
-    FillPortions: 1,
+    // FillPortions: 1,
     Fill: 'blue',
   });
 
