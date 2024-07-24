@@ -1,9 +1,9 @@
-import React from 'react';
-import { styleMapper } from './constants';
+import { CSSProperties } from 'react';
+import { styleMapper } from './mappers/style-mapper';
 import { StyleProps } from './types';
 
-export function transformToStyles(props: StyleProps): React.CSSProperties {
-  const styles: React.CSSProperties = {};
+export function transformToStyles(props: StyleProps): CSSProperties {
+  const styles: CSSProperties = {};
 
   for (const key in props) {
     if (props.hasOwnProperty(key)) {
@@ -12,8 +12,7 @@ export function transformToStyles(props: StyleProps): React.CSSProperties {
       if (value !== undefined) {
         const mapperFunction = styleMapper[k];
         if (mapperFunction) {
-          // @ts-ignore
-          Object.assign(styles, mapperFunction(value));
+          Object.assign(styles, mapperFunction(value as never));
         }
       }
     }

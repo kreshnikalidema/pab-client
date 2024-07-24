@@ -1,78 +1,82 @@
-import React from 'react';
+import { CSSProperties } from 'react';
 
-export enum LayoutDirection {
-  ROW = 'row',
-  COLUMN = 'column',
+export enum BorderStyle {
+  None = 'None',
+  Solid = 'Solid',
+  Dashed = 'Dashed',
+  Dotted = 'Dotted',
 }
 
-export enum LayoutJustify {
-  FLEX_START = 'flex-start',
-  CENTER = 'center',
-  FLEX_END = 'flex-end',
-  SPACE_BETWEEN = 'space-between',
-  SPACE_AROUND = 'space-around',
+export enum LayoutDirection {
+  Horizontal = 'Horizontal',
+  Vertical = 'Vertical',
+}
+
+export enum LayoutJustifyContent {
+  Start = 'Start',
+  End = 'End',
+  Center = 'Center',
+  SpaceBetween = 'Space Between',
+  SpaceAround = 'Space Around',
 }
 
 export enum LayoutAlignItems {
-  FLEX_START = 'flex-start',
-  CENTER = 'center',
-  FLEX_END = 'flex-end',
-  BASELINE = 'baseline',
-  STRETCH = 'stretch',
+  Start = 'Start',
+  Center = 'Center',
+  End = 'End',
+  Stretch = 'Stretch',
 }
 
 export enum LayoutOverflow {
-  VISIBLE = 'visible',
-  HIDDEN = 'hidden',
-  SCROLL = 'scroll',
-  AUTO = 'auto',
+  Hidden = 'Hidden',
+  Scroll = 'Scroll',
 }
 
 export enum LayoutWrap {
-  NOWRAP = 'nowrap',
-  WRAP = 'wrap',
-  WRAP_REVERSE = 'wrap-reverse',
+  Wrap = 'Wrap',
+  NoWrap = 'NoWrap',
+}
+
+export enum DropShadow {
+  None = 'None',
+  Light = 'Light',
+  SemiLight = 'SemiLight',
+  Regular = 'Regular',
+  SemiBold = 'SemiBold',
+  Bold = 'Bold',
+  ExtraBold = 'ExtraBold',
 }
 
 export interface StyleProps {
-  BorderColor?: string;
-  BorderStyle?: string;
-  BorderThickness?: number;
-  Color?: string;
-  Fill?: string;
-  FocusedBorderColor?: string;
-  Height?: number;
-  PaddingBottom?: number;
-  PaddingLeft?: number;
-  PaddingRight?: number;
-  PaddingTop?: number;
-  PressedBorderColor?: string;
-  PressedColor?: string;
-  PressedFill?: string;
-  Visible?: boolean;
-  Width?: number;
-  X?: number;
-  Y?: number;
-  LayoutDirection?: LayoutDirection;
-  LayoutJustify?: LayoutJustify;
-  LayoutAlignItems?: LayoutAlignItems;
-  LayoutGap?: number;
-  LayoutOverflowX?: LayoutOverflow;
-  LayoutOverflowY?: LayoutOverflow;
-  LayoutWrap?: LayoutWrap;
-  LayoutMinHeight?: number;
-  LayoutMinWidth?: number;
-  LayoutMaxHeight?: number;
-  LayoutMaxWidth?: number;
-  FillPortions?: number;
-
-  DropShadow?: string;
-  RadiusTopLeft?: number;
-  RadiusTopRight?: number;
-  RadiusBottomLeft?: number;
-  RadiusBottomRight?: number;
+  BorderColor: string;
+  BorderStyle: BorderStyle;
+  BorderThickness: number;
+  ContentLanguage: string;
+  DropShadow: DropShadow;
+  EnableChildFocus: boolean;
+  Fill: string;
+  Height: number;
+  LayoutAlignItems: LayoutAlignItems;
+  LayoutDirection: LayoutDirection;
+  LayoutGap: number;
+  LayoutJustifyContent: LayoutJustifyContent;
+  LayoutOverflowX: LayoutOverflow;
+  LayoutOverflowY: LayoutOverflow;
+  LayoutWrap: LayoutWrap;
+  PaddingBottom: number;
+  PaddingLeft: number;
+  PaddingRight: number;
+  PaddingTop: number;
+  RadiusBottomLeft: number;
+  RadiusBottomRight: number;
+  RadiusTopLeft: number;
+  RadiusTopRight: number;
+  Visible: boolean;
+  Width: number;
+  X: number;
+  Y: number;
 }
 
 export type StyleMapper = {
-  [K in keyof StyleProps]?: (value: StyleProps[K]) => React.CSSProperties;
+  [K in keyof StyleProps]: (value: StyleProps[K]) => CSSProperties;
 };

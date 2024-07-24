@@ -1,73 +1,39 @@
 import { Component } from 'helpers/component';
+import {
+  BorderStyle,
+  DropShadow,
+  LayoutAlignItems,
+  LayoutJustifyContent,
+  LayoutOverflow,
+  LayoutWrap,
+} from 'helpers/component/types';
 
-export interface IVerticalContainer {
-  AccessibleLabel?: string;
-  BorderColor?: string;
-  BorderStyle?: string;
-  BorderThickness?: number;
-  Color?: string;
-  DisplayMode?: string;
-  DisabledBorderColor?: string;
-  Fill?: string;
-  FocusedBorderColor?: string;
-  Height?: number;
-  PaddingBottom?: number;
-  PaddingLeft?: number;
-  PaddingRight?: number;
-  PaddingTop?: number;
-  PressedBorderColor?: string;
-  PressedColor?: string;
-  PressedFill?: string;
-  Visible?: boolean;
-  Width?: number;
-  X?: number;
-  Y?: number;
-  FillPortions?: number;
-}
-
-enum DropShadow {
-  None,
-  Small,
-  Medium,
-  Large,
-}
-
-enum LayoutAlignItems {
-  Center,
-  Stretch,
-  FlexStart,
-  FlexEnd,
-  Baseline,
-}
-
-enum LayoutJustifyContent {
-  Start,
-  End,
-  Center,
-  SpaceBetween,
-  SpaceAround,
-  SpaceEvenly,
-}
-
-enum LayoutMode {
-  Auto,
-  Fixed,
-  Stretch,
-}
-
-enum Font {
-  LatoBlack,
-  Arial,
-  Helvetica,
-  TimesNewRoman,
-  Verdana,
-}
-
-enum FontWeight {
-  Light,
-  Regular,
-  Semibold,
-  Bold,
+export interface IVerticalContainerProperties {
+  BorderColor: string;
+  BorderStyle: BorderStyle;
+  BorderThickness: number;
+  DropShadow: DropShadow;
+  Fill: string;
+  Height: number;
+  Width: number;
+  LayoutAlignItems: LayoutAlignItems;
+  LayoutDirection: LayoutDirection;
+  LayoutGap: number;
+  LayoutJustifyContent: LayoutJustifyContent;
+  LayoutOverflowX: LayoutOverflow;
+  LayoutOverflowY: LayoutOverflow;
+  LayoutWrap: LayoutWrap;
+  PaddingBottom: number;
+  PaddingLeft: number;
+  PaddingRight: number;
+  PaddingTop: number;
+  RadiusBottomLeft: number;
+  RadiusBottomRight: number;
+  RadiusTopLeft: number;
+  RadiusTopRight: number;
+  Visible: boolean;
+  X: number;
+  Y: number;
 }
 
 export function createContainer() {
@@ -92,13 +58,12 @@ export function createContainer2() {
     LayoutAlignItems: LayoutAlignItems.Stretch,
     LayoutGap: 10,
     LayoutJustifyContent: LayoutJustifyContent.Start,
-    LayoutMode: LayoutMode.Auto,
     RadiusBottomLeft: 0,
     RadiusBottomRight: 0,
     RadiusTopLeft: 0,
     RadiusTopRight: 0,
     FillPortions: 1,
-    Fill: "blue",
+    Fill: 'blue',
   });
 
   const rightComponent = new Component({
@@ -108,13 +73,12 @@ export function createContainer2() {
     LayoutJustifyContent: LayoutJustifyContent.End,
     // LayoutMinHeight: 0,
     // LayoutMinWidth: 0,
-    LayoutMode: LayoutMode.Auto,
     RadiusBottomLeft: 0,
     RadiusBottomRight: 0,
     RadiusTopLeft: 0,
     RadiusTopRight: 0,
     FillPortions: 1,
-    Fill: "red",
+    Fill: 'red',
   });
 
   const mainComponent = new Component<any>({
@@ -123,15 +87,84 @@ export function createContainer2() {
     // Height: 60,
     LayoutAlignItems: LayoutAlignItems.Center,
     // LayoutMinWidth: 0,
-    LayoutMode: LayoutMode.Auto,
     RadiusBottomLeft: 0,
     RadiusBottomRight: 0,
     RadiusTopLeft: 0,
     RadiusTopRight: 0,
-    Fill: "green",
+    Fill: 'green',
   });
 
   mainComponent.children = [leftComponent, rightComponent];
 
   return mainComponent;
+}
+
+export function createContainer3() {
+  // Column 1
+  const titleComponent = new Component({
+    Color: '#fff',
+    FontSize: 24,
+    Text: 'Title',
+  });
+
+  const columnComponent1 = new Component<any>({
+    Padding: 10,
+    FillPortions: 1,
+  });
+
+  columnComponent1.children.push(titleComponent);
+
+  // Column 2
+  //  const contentComponent = new Component({
+  //   Color: '#fff',
+  //   FontSize: 16,
+  //   Text: 'More content...',
+  // });
+
+  const columnComponent2 = new Component<any>({
+    LayoutJustifyContent: LayoutJustifyContent.End,
+    LayoutAlignItems: LayoutAlignItems.Center,
+    Padding: 10,
+    FillPortions: 1,
+  });
+
+  columnComponent2.children.push();
+
+  // Main
+  const mainComponent = new Component({
+    LayoutDirection: 'row',
+    LayoutAlignItems: LayoutAlignItems.Center,
+    Height: 60,
+    PaddingTop: 10,
+    PaddingBottom: 10,
+    PaddingLeft: 10,
+    PaddingRight: 10,
+    BorderColor: '#ccc',
+    BorderThickness: 1,
+    BorderStyle: 'solid',
+  });
+
+  mainComponent.children.push(columnComponent1);
+  mainComponent.children.push(columnComponent2);
+
+  return mainComponent;
+}
+
+export function createContainer4() {
+  const buttonComponent = new Component({
+    Text: 'Click Me', // Assuming you want to include text as part of the properties
+    Color: 'white', // Text color
+    Fill: 'blue', // Background color
+    FontSize: 16,
+    Padding: 12,
+    BorderColor: 'black',
+    BorderThickness: 2,
+    BorderStyle: 'solid',
+    Cursor: 'pointer', // Typically, buttons have a pointer cursor
+    Display: 'inline-flex', // Flex to center content, inline-flex to fit content
+    AlignItems: 'center', // Center content vertically
+    JustifyContent: 'center', // Center content horizontally
+  });
+
+  return buttonComponent;
 }
