@@ -1,86 +1,69 @@
 import { CSSProperties } from 'react';
-import {
-  BorderStyle,
-  DropShadow,
-  LayoutAlignItems,
-  LayoutDirection,
-  LayoutJustifyContent,
-  LayoutOverflow,
-  LayoutWrap,
-  StyleMapper,
-} from './types';
+import { StyleMapper } from './types';
 
-// Drop Shadow Mapper
-const dropShadowMapper: {
-  [key in DropShadow]: CSSProperties['boxShadow'];
-} = {
-  [DropShadow.None]: 'none',
-  [DropShadow.Light]: '1px 1px 3px rgba(0,0,0,0.1)',
-  [DropShadow.SemiLight]: '1px 1px 5px rgba(0,0,0,0.2)',
-  [DropShadow.Regular]: '2px 2px 6px rgba(0,0,0,0.3)',
-  [DropShadow.SemiBold]: '2px 2px 8px rgba(0,0,0,0.4)',
-  [DropShadow.Bold]: '3px 3px 10px rgba(0,0,0,0.5)',
-  [DropShadow.ExtraBold]: '4px 4px 12px rgba(0,0,0,0.6)',
-};
-
-// Layout Align Items Mapper
-const layoutAlignItemsMapper: {
-  [key in LayoutAlignItems]: CSSProperties['alignItems'];
-} = {
-  [LayoutAlignItems.Start]: 'flex-start',
-  [LayoutAlignItems.Center]: 'center',
-  [LayoutAlignItems.End]: 'flex-end',
-  [LayoutAlignItems.Stretch]: 'stretch',
-};
-
-// Layout Direction Mapper
-export const layoutDirectionMapper: {
-  [key in LayoutDirection]: CSSProperties['flexDirection'];
-} = {
-  [LayoutDirection.Horizontal]: 'row',
-  [LayoutDirection.Vertical]: 'column',
-};
-
-// Layout Justify Content Mapper
 export const layoutJustifyContentMapper: {
-  [key in LayoutJustifyContent]: CSSProperties['justifyContent'];
+  [key: string]: CSSProperties['justifyContent'];
 } = {
-  [LayoutJustifyContent.Start]: 'flex-start',
-  [LayoutJustifyContent.End]: 'flex-end',
-  [LayoutJustifyContent.Center]: 'center',
-  [LayoutJustifyContent.SpaceBetween]: 'space-between',
-  [LayoutJustifyContent.SpaceAround]: 'space-around',
+  'LayoutJustifyContent.Start': 'flex-start',
+  'LayoutJustifyContent.End': 'flex-end',
+  'LayoutJustifyContent.Center': 'center',
+  'LayoutJustifyContent.SpaceBetween': 'space-between',
+  'LayoutJustifyContent.SpaceAround': 'space-around',
 };
 
-// Layout Overflow Mapper
+export const layoutAlignItemsMapper: {
+  [key: string]: CSSProperties['alignItems'];
+} = {
+  'LayoutAlignItems.Start': 'flex-start',
+  'LayoutAlignItems.Center': 'center',
+  'LayoutAlignItems.End': 'flex-end',
+  'LayoutAlignItems.Stretch': 'stretch',
+};
+
+export const layoutDirectionMapper: {
+  [key: string]: CSSProperties['flexDirection'];
+} = {
+  'LayoutDirection.Horizontal': 'row',
+  'LayoutDirection.Vertical': 'column',
+};
+
+export const dropShadowMapper: {
+  [key: string]: CSSProperties['boxShadow'];
+} = {
+  'DropShadow.None': 'none',
+  'DropShadow.Light': '1px 1px 3px rgba(0,0,0,0.1)',
+  'DropShadow.SemiLight': '1px 1px 5px rgba(0,0,0,0.2)',
+  'DropShadow.Regular': '2px 2px 6px rgba(0,0,0,0.3)',
+  'DropShadow.SemiBold': '2px 2px 8px rgba(0,0,0,0.4)',
+  'DropShadow.Bold': '3px 3px 10px rgba(0,0,0,0.5)',
+  'DropShadow.ExtraBold': '4px 4px 12px rgba(0,0,0,0.6)',
+};
+
 export const layoutOverflowMapper: {
-  [key in LayoutOverflow]: CSSProperties['overflowX'] &
-    CSSProperties['overflowY'];
+  [key: string]: CSSProperties['overflowX'] & CSSProperties['overflowY'];
 } = {
-  [LayoutOverflow.Hidden]: 'hidden',
-  [LayoutOverflow.Scroll]: 'scroll',
+  'LayoutOverflow.Hidden': 'hidden',
+  'LayoutOverflow.Scroll': 'scroll',
 };
 
-// Layout Wrap Mapper
 export const layoutWrapMapper: {
-  [key in LayoutWrap]: CSSProperties['flexWrap'];
+  [key: string]: CSSProperties['flexWrap'];
 } = {
-  [LayoutWrap.Wrap]: 'wrap',
-  [LayoutWrap.NoWrap]: 'nowrap',
+  'LayoutWrap.Wrap': 'wrap',
+  'LayoutWrap.NoWrap': 'nowrap',
 };
 
-// Style Mapper
 export const styleMapper: StyleMapper<{}> = {
   BorderColor: (value: string) => ({
     borderColor: value,
   }),
-  BorderStyle: (value: BorderStyle) => ({
+  BorderStyle: (value: string) => ({
     borderStyle: value.toLowerCase(),
   }),
   BorderThickness: (value: number) => ({
     borderWidth: `${value}px`,
   }),
-  DropShadow: (value: DropShadow) => ({
+  DropShadow: (value: string) => ({
     boxShadow: dropShadowMapper[value],
   }),
   Fill: (value: string) => ({
@@ -92,11 +75,11 @@ export const styleMapper: StyleMapper<{}> = {
   Width: (value: number) => ({
     width: `${value}px`,
   }),
-  LayoutAlignItems: (value: LayoutAlignItems) => ({
+  LayoutAlignItems: (value: string) => ({
     alignItems: layoutAlignItemsMapper[value],
     display: 'flex',
   }),
-  LayoutDirection: (value: LayoutDirection) => ({
+  LayoutDirection: (value: string) => ({
     flexDirection: layoutDirectionMapper[value],
     display: 'flex',
   }),
@@ -104,17 +87,17 @@ export const styleMapper: StyleMapper<{}> = {
     gap: `${value}px`,
     display: 'flex',
   }),
-  LayoutJustifyContent: (value: LayoutJustifyContent) => ({
+  LayoutJustifyContent: (value: string) => ({
     justifyContent: layoutJustifyContentMapper[value],
     display: 'flex',
   }),
-  LayoutOverflowX: (value: LayoutOverflow) => ({
+  LayoutOverflowX: (value: string) => ({
     overflowX: layoutOverflowMapper[value],
   }),
-  LayoutOverflowY: (value: LayoutOverflow) => ({
+  LayoutOverflowY: (value: string) => ({
     overflowY: layoutOverflowMapper[value],
   }),
-  LayoutWrap: (value: LayoutWrap) => ({
+  LayoutWrap: (value: string) => ({
     flexWrap: layoutWrapMapper[value],
   }),
   PaddingBottom: (value: number) => ({

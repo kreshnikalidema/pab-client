@@ -27,4 +27,5 @@ export interface IHorizontalContainerProperties {
 
   FillPortions: number;
   LayoutMode: string;
+  AlignInContainer: string;
 }

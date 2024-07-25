@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { toJS } from 'mobx';
 import { Drawer, Box, Typography, Fab, Toolbar } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
-import {CodeDisplay} from 'components/code-display';
+import { CodeDisplay } from 'components/code-display';
+import { parse, stringify } from 'yaml';
 
-const sampleJson = JSON.stringify({
-  key1: 'value1',
-  key2: 'value2',
-  nested: {
-    key3: 'value3',
+import { Component } from 'libraries/power-apps';
+
+interface InstructionsProps {
+  container: Component;
+}
+
+const sampleJson = JSON.stringify(
+  {
+    key1: 'value1',
+    key2: 'value2',
+    nested: {
+      key3: 'value3',
+    },
   },
-}, null, 2);
+  null,
+  2
+);
 
 const sampleYaml = `
 key1: value1
@@ -18,32 +31,29 @@ nested:
   key3: value3
 `;
 
-export const Instructions = () => {
+export const Instructions = observer<InstructionsProps>((props) => {
+  const { container } = props;
+
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
-      return;
-    }
-    setIsOpen(open);
-  };
+  const jsObj = toJS(container.yaml);
 
-  const instructions = (
-    <Box
-      sx={{
-        width: '50vw', // Occupies half of the viewport width
-        padding: 2,
-      }}
-    >
-      <Toolbar/>
-      <Typography variant="h6">Instructions</Typography>
-      <Typography paragraph>
-        Here are the different instructions you can follow:
-      </Typography>
-      <CodeDisplay code={sampleJson} language="json" />
-      <CodeDisplay code={sampleYaml} language="yaml" />
-    </Box>
-  );
+  // @ts-ignore
+  const json = jsObj.Test.Children;
+
+  const yaml = stringify(json);
+
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+      setIsOpen(open);
+    };
 
   return (
     <div>
@@ -67,10 +77,21 @@ export const Instructions = () => {
           keepMounted: true, // Better open performance on mobile.
         }}
       >
-        {instructions}
+        <Box
+          sx={{
+            width: '50vw', // Occupies half of the viewport width
+            padding: 2,
+          }}
+        >
+          <Toolbar />
+          <Typography variant="h6">Instructions</Typography>
+          <Typography paragraph>
+            Here are the different instructions you can follow:
+          </Typography>
+          <CodeDisplay code={JSON.stringify(json)} language="json" />
+          <CodeDisplay code={yaml} language="yaml" />
+        </Box>
       </Drawer>
     </div>
   );
-};
-
-
+});

@@ -2,7 +2,7 @@ import { Component } from 'libraries/power-apps';
 import { ILabelProperties } from './types';
 
 export function createLabel() {
-  const component = new Component<ILabelProperties>();
+  const component = new Component<ILabelProperties>('Label');
 
   return component;
 }

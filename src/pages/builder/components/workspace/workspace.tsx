@@ -1,14 +1,18 @@
 import * as React from 'react';
+import { observer } from 'mobx-react-lite';
 import { WorkspaceContainer } from './workspace-container';
 import { WorkspaceContent } from './workspace-content';
-import { createVerticalContainer } from 'libraries/power-apps/components';
+import { Component } from 'libraries/power-apps';
 
-const container = createVerticalContainer();
+interface WorkspaceProps {
+  container: Component;
+}
 
-export const Workspace: React.FC = () => {
+export const Workspace = observer<WorkspaceProps>((props) => {
+  const { container } = props;
   return (
     <WorkspaceContainer>
       <WorkspaceContent container={container} first />
     </WorkspaceContainer>
   );
-};
+});

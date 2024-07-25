@@ -1,14 +1,13 @@
 import { Component } from 'libraries/power-apps';
 import { IHorizontalContainerProperties } from './types';
 
-export function createHorizontalContainer() {
+export function createManualContainer() {
   const component = new Component<IHorizontalContainerProperties>(
     'GroupContainer',
-    'horizontalAutoLayoutContainer'
+    'manualLayoutContainer'
   );
 
-  // component.setProperty('LayoutDirection', 'LayoutDirection.Horizontal');
-  component.setProperty('LayoutMode', 'LayoutMode.Auto');
+  component.setProperty('AlignInContainer', 'AlignInContainer.SetByContainer');
 
   return component;
 }

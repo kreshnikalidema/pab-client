@@ -8,69 +8,22 @@ export type StyleMapper<T> = {
   [K in keyof T]: (value: T[K]) => CSSProperties;
 };
 
-export enum BorderStyle {
-  None = 'None',
-  Solid = 'Solid',
-  Dashed = 'Dashed',
-  Dotted = 'Dotted',
-}
-
-export enum LayoutDirection {
-  Horizontal = 'Horizontal',
-  Vertical = 'Vertical',
-}
-
-export enum LayoutJustifyContent {
-  Start = 'Start',
-  End = 'End',
-  Center = 'Center',
-  SpaceBetween = 'Space Between',
-  SpaceAround = 'Space Around',
-}
-
-export enum LayoutAlignItems {
-  Start = 'Start',
-  Center = 'Center',
-  End = 'End',
-  Stretch = 'Stretch',
-}
-
-export enum LayoutOverflow {
-  Hidden = 'Hidden',
-  Scroll = 'Scroll',
-}
-
-export enum LayoutWrap {
-  Wrap = 'Wrap',
-  NoWrap = 'NoWrap',
-}
-
-export enum DropShadow {
-  None = 'None',
-  Light = 'Light',
-  SemiLight = 'SemiLight',
-  Regular = 'Regular',
-  SemiBold = 'SemiBold',
-  Bold = 'Bold',
-  ExtraBold = 'ExtraBold',
-}
-
 export interface StyleProps {
   BorderColor: string;
-  BorderStyle: BorderStyle;
+  BorderStyle: string;
   BorderThickness: number;
   ContentLanguage: string;
-  DropShadow: DropShadow;
+  DropShadow: string;
   EnableChildFocus: boolean;
   Fill: string;
   Height: number;
-  LayoutAlignItems: LayoutAlignItems;
-  LayoutDirection: LayoutDirection;
+  LayoutAlignItems: string;
+  LayoutDirection: string;
   LayoutGap: number;
-  LayoutJustifyContent: LayoutJustifyContent;
-  LayoutOverflowX: LayoutOverflow;
-  LayoutOverflowY: LayoutOverflow;
-  LayoutWrap: LayoutWrap;
+  LayoutJustifyContent: string;
+  LayoutOverflowX: string;
+  LayoutOverflowY: string;
+  LayoutWrap: string;
   PaddingBottom: number;
   PaddingLeft: number;
   PaddingRight: number;

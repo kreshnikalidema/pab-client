@@ -10,9 +10,10 @@ export function transformToStyles<T>(properties: Properties<T>) {
       const k = key as keyof T;
       const value = properties[k];
       if (value !== undefined) {
+        const rawValue = (value as unknown as string).replace('=', '');
         const mapperFunction = (styleMapper as StyleMapper<T>)[k];
         if (mapperFunction) {
-          Object.assign(styles, mapperFunction(value as never));
+          Object.assign(styles, mapperFunction(rawValue as never));
         }
       }
     }

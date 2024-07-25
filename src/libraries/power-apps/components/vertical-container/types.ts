@@ -1,27 +1,17 @@
-import {
-  BorderStyle,
-  DropShadow,
-  LayoutAlignItems,
-  LayoutDirection,
-  LayoutJustifyContent,
-  LayoutOverflow,
-  LayoutWrap,
-} from 'libraries/power-apps';
-
 export interface IVerticalContainerProperties {
   BorderColor: string;
-  BorderStyle: BorderStyle;
+  BorderStyle: string;
   BorderThickness: number;
-  DropShadow: DropShadow;
+  DropShadow: string;
   Fill: string;
   Height: number;
-  LayoutAlignItems: LayoutAlignItems;
-  LayoutDirection: LayoutDirection;
+  LayoutAlignItems: string;
+  LayoutDirection: string;
   LayoutGap: number;
-  LayoutJustifyContent: LayoutJustifyContent;
-  LayoutOverflowX: LayoutOverflow;
-  LayoutOverflowY: LayoutOverflow;
-  LayoutWrap: LayoutWrap;
+  LayoutJustifyContent: string;
+  LayoutOverflowX: string;
+  LayoutOverflowY: string;
+  LayoutWrap: string;
   PaddingBottom: number;
   PaddingLeft: number;
   PaddingRight: number;
@@ -36,4 +26,6 @@ export interface IVerticalContainerProperties {
   Y: number;
 
   FillPortions: number;
+  LayoutMode: string;
+  AlignInContainer: string;
 }
