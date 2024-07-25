@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { useDrop } from 'react-dnd';
-import { DroppableContainer } from './droppable-container';
+import {
+  DroppableContainer1,
+  DroppableContainer2,
+} from './droppable-container';
 
 interface DroppableZoneProps<T = unknown> {
   children?: React.ReactNode;
   onDrop?: (item: T) => void;
   style: any;
+  first: boolean;
 }
 
 export const DroppableZone = <T,>(props: DroppableZoneProps<T>) => {
-  const { onDrop, children, style } = props;
+  const { onDrop, children, style, first } = props;
 
   const [{ isOver }, drop] = useDrop({
     accept: 'COMPONENT',
@@ -25,9 +29,17 @@ export const DroppableZone = <T,>(props: DroppableZoneProps<T>) => {
     }),
   });
 
+  if (first) {
+    return (
+      <DroppableContainer1 ref={drop} isOver={isOver} style={style}>
+        {children}
+      </DroppableContainer1>
+    );
+  }
+
   return (
-    <DroppableContainer ref={drop} isOver={isOver} style={style}>
+    <DroppableContainer2 ref={drop} isOver={isOver} style={style}>
       {children}
-    </DroppableContainer>
+    </DroppableContainer2>
   );
 };

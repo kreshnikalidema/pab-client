@@ -8,7 +8,6 @@ export type StyleMapper<T> = {
   [K in keyof T]: (value: T[K]) => CSSProperties;
 };
 
-
 export enum BorderStyle {
   None = 'None',
   Solid = 'Solid',
@@ -84,5 +83,5 @@ export interface StyleProps {
   Width: number;
   X: number;
   Y: number;
+  FillPortions: number;
 }
-

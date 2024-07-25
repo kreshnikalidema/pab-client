@@ -1,8 +1,6 @@
 import { CSSProperties } from 'react';
-import { styleMapper } from '../mappers';
-import {Properties, StyleMapper} from "../types"
-
-
+import { styleMapper } from './mappers';
+import { Properties, StyleMapper } from './types';
 
 export function transformToStyles<T>(properties: Properties<T>) {
   const styles: CSSProperties = {};
