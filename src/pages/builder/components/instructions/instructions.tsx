@@ -16,20 +16,23 @@ export const Instructions = observer<InstructionsProps>((props) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const theme = container.theme;
+
   const json = container.yaml.Test.Children;
 
   const yaml = stringify(json);
 
-  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return;
-    }
-    setIsOpen(open);
-  };
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+      setIsOpen(open);
+    };
 
   return (
     <div>
@@ -61,8 +64,10 @@ export const Instructions = observer<InstructionsProps>((props) => {
         >
           <Toolbar />
           <Typography variant="h6">Instructions</Typography>
-          <Typography paragraph>Here are the different instructions you can follow:</Typography>
-          <CodeDisplay code={JSON.stringify(json)} language="json" />
+          <Typography paragraph>
+            Here are the different instructions you can follow:
+          </Typography>
+          <CodeDisplay code={JSON.stringify(theme)} language="json" />
           <CodeDisplay code={yaml} language="yaml" />
         </Box>
       </Drawer>

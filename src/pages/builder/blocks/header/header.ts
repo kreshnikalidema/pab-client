@@ -4,7 +4,10 @@ import { createLabel } from 'libraries/power-apps/label';
 export function createHeader() {
   // Container
   const container = createHorizontalContainer('Header_Container');
-  container.setProperty('LayoutJustifyContent', 'LayoutJustifyContent.SpaceBetween');
+  container.setProperty(
+    'LayoutJustifyContent',
+    'LayoutJustifyContent.SpaceBetween'
+  );
 
   // Column 1
   const column1 = createHorizontalContainer('Header_Column1');

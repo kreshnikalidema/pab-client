@@ -1,24 +1,31 @@
-import { makeAutoObservable, toJS } from 'mobx';
-import { IComponent, IProperties, IOptions, IYaml, IYamlCode } from './types';
+import { makeAutoObservable } from 'mobx';
+import { IComponent, IProperties, IOptions, IYaml, IVariables } from './types';
+import { toYaml, toTheme } from './helpers';
 
-export class Component<T = unknown> implements IComponent<T> {
+export class Component<T = unknown, P = unknown> implements IComponent<T, P> {
   componentName: string;
   control?: string;
   variant?: string;
   properties: IProperties<T>;
+  variables: IVariables<P>;
   children: IComponent[];
 
-  constructor(options: IOptions<T>) {
+  constructor(options: IOptions<T, P>) {
     this.componentName = options.componentName;
     this.control = options.control;
     this.variant = options.variant;
     this.properties = options.properties || {};
+    this.variables = options.variables || {};
     this.children = options.children || [];
     makeAutoObservable(this);
   }
 
   setProperty<K extends keyof T>(key: K, value: string): void {
     this.properties[key as keyof T] = `=${value}` as unknown as T[keyof T];
+  }
+
+  setVariable<K extends keyof P>(key: K, value: P[K]): void {
+    this.variables[key as keyof P] = value;
   }
 
   appendChild(component: IComponent): void {
@@ -33,16 +40,11 @@ export class Component<T = unknown> implements IComponent<T> {
     this.children = this.children.filter((child) => child !== component);
   }
 
-  get yaml(): IYaml<T> {
-    const yamlCode: IYamlCode<T> = {
-      Control: this.control,
-      Variant: this.variant,
-      Properties: this.properties,
-      Children: this.children.map((child) => child.yaml),
-    };
+  get theme(): IVariables<P> {
+    return toTheme(this as IComponent<T, P>);
+  }
 
-    return toJS({
-      [this.componentName]: yamlCode,
-    });
+  get yaml(): IYaml<T, P> {
+    return toYaml(this as IComponent<T, P>);
   }
 }

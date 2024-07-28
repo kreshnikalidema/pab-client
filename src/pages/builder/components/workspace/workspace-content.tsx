@@ -12,30 +12,32 @@ interface DroppedItem {
   fn: () => Component;
 }
 
-export const WorkspaceContent: React.FC<WorkspaceContentProps> = observer((props) => {
-  const { container } = props;
+export const WorkspaceContent: React.FC<WorkspaceContentProps> = observer(
+  (props) => {
+    const { container } = props;
 
-  const onDrop = React.useCallback(
-    (item: DroppedItem) => {
-      container.appendChild(item.fn());
-    },
-    [container]
-  );
+    const onDrop = React.useCallback(
+      (item: DroppedItem) => {
+        container.appendChild(item.fn());
+      },
+      [container]
+    );
 
-  switch (container.control) {
-    case 'GroupContainer':
-    case 'Gallery': {
-      return (
-        <DroppableZone onDrop={onDrop} style={{}}>
-          {container.children.map((child, index) => (
-            <WorkspaceContent key={index} container={child} />
-          ))}
-        </DroppableZone>
-      );
-    }
+    switch (container.control) {
+      case 'GroupContainer':
+      case 'Gallery': {
+        return (
+          <DroppableZone onDrop={onDrop} style={{}}>
+            {container.children.map((child, index) => (
+              <WorkspaceContent key={index} container={child as any} />
+            ))}
+          </DroppableZone>
+        );
+      }
 
-    default: {
-      return null;
+      default: {
+        return null;
+      }
     }
   }
-});
+);
