@@ -1,5 +1,5 @@
 import { createHorizontalContainer } from 'libraries/power-apps/components/horizontal-container';
-import { createManualContainer } from 'libraries/power-apps/components/manual-container';
+import { createContainer } from 'libraries/power-apps/components/container';
 import { createImage } from 'libraries/power-apps/components/image';
 import { createLabel } from 'libraries/power-apps/components/label';
 
@@ -24,7 +24,7 @@ export function createProfileCard() {
   card.setCssProperty('alignItems', 'center');
 
   // Avatar
-  const avatar = createManualContainer('Profile_Avatar');
+  const avatar = createContainer('Profile_Avatar');
   avatar.setProperty('AlignInContainer', 'AlignInContainer.Center');
   avatar.setProperty('BorderColor', 'RGBA(115,131,176,1)');
   avatar.setProperty('BorderThickness', '2');

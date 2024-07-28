@@ -5,7 +5,6 @@ export function createLabel(componentName: string) {
   const component = new Component<ILabelProperties>({
     componentName: componentName,
     control: 'Label',
-    variant: 'verticalAutoLayoutContainer',
   });
 
   return component;

@@ -2,12 +2,12 @@ import { CSSProperties } from 'react';
 import { makeAutoObservable, toJS } from 'mobx';
 import { IComponent, IProperties, IOptions, IYaml } from './types';
 
-export class Component<T = {}> implements IComponent<T> {
+export class Component<T = unknown> implements IComponent<T> {
   componentName: string;
   control?: string;
   variant?: string;
   properties: IProperties<T>;
-  children: IComponent<T>[];
+  children: IComponent[];
   cssProperties: CSSProperties;
 
   constructor(options: IOptions<T>) {
@@ -32,7 +32,7 @@ export class Component<T = {}> implements IComponent<T> {
     this.children.push(component);
   }
 
-  prependChild(component: Component<T>): void {
+  prependChild(component: Component<unknown>): void {
     this.children.unshift(component);
   }
 
@@ -45,16 +45,6 @@ export class Component<T = {}> implements IComponent<T> {
   }
 
   get yaml(): IYaml<T> {
-    if (this.children.length === 0) {
-      return toJS({
-        [this.componentName]: {
-          Control: this.control,
-          Variant: this.variant,
-          Properties: this.properties,
-        },
-      });
-    }
-
     return toJS({
       [this.componentName]: {
         Control: this.control,

@@ -1,6 +1,6 @@
 import { createHorizontalContainer } from 'libraries/power-apps/components/horizontal-container';
 import { createVerticalContainer } from 'libraries/power-apps/components/vertical-container';
-import { createManualContainer } from 'libraries/power-apps/components/manual-container';
+import { createContainer } from 'libraries/power-apps/components/container';
 
 export function createLayout() {
   // Container
@@ -23,7 +23,7 @@ export function createLayout() {
   container.setCssProperty('flexDirection', 'row');
 
   // Sidebar
-  const left = createManualContainer('Layout_Left');
+  const left = createContainer('Layout_Left');
 
   left.setProperty('AlignInContainer', 'AlignInContainer.SetByContainer');
   left.setProperty('BorderStyle', 'BorderStyle.None');

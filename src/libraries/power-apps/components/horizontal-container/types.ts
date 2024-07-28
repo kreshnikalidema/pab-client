@@ -1,43 +1,29 @@
 export interface IHorizontalContainerProperties {
   BorderColor: string;
   BorderStyle: string;
-  BorderThickness: number;
+  BorderThickness: string;
+  ContentLanguage: string;
   DropShadow: string;
+  EnableChildFocus: string;
   Fill: string;
-  Height: number;
+  Height: string;
   LayoutAlignItems: string;
   LayoutDirection: string;
-  LayoutGap: number;
+  LayoutGap: string;
   LayoutJustifyContent: string;
   LayoutOverflowX: string;
   LayoutOverflowY: string;
   LayoutWrap: string;
-  PaddingBottom: number;
-  PaddingLeft: number;
-  PaddingRight: number;
-  PaddingTop: number;
-  RadiusBottomLeft: number;
-  RadiusBottomRight: number;
-  RadiusTopLeft: number;
-  RadiusTopRight: number;
-  Visible: boolean;
-  Width: number;
-  X: number;
-  Y: number;
-
-  LayoutMode: string;
-
-  Text: string;
-  Color: string;
-  AlignInContainer: string;
-  FillPortions: string;
-  Font: string;
-  FontWeight: string;
-  LayoutMinHeight: string;
-  LayoutMinWidth: string;
-  Size: string;
-
-  OnSelect: string;
-  HoverFill: string;
-  PressedFill: string;
+  PaddingBottom: string;
+  PaddingLeft: string;
+  PaddingRight: string;
+  PaddingTop: string;
+  RadiusBottomLeft: string;
+  RadiusBottomRight: string;
+  RadiusTopLeft: string;
+  RadiusTopRight: string;
+  Visible: string;
+  Width: string;
+  X: string;
+  Y: string;
 }

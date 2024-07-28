@@ -1,5 +1,5 @@
 import { createGallery } from 'libraries/power-apps/components/gallery';
-import { createManualContainer } from 'libraries/power-apps/components/manual-container';
+import { createContainer } from 'libraries/power-apps/components/container';
 import { createImage } from 'libraries/power-apps/components/image';
 import { createLabel } from 'libraries/power-apps/components/label';
 import { createButton } from 'libraries/power-apps/components/button';
@@ -40,9 +40,9 @@ export function createMenu() {
   submenu.setProperty('Width', 'Parent.TemplateWidth');
   submenu.setProperty('Y', 'Menu_Item_Outer.Height');
 
-  submenu.setCssProperty('display', 'none')
+  submenu.setCssProperty('display', 'none');
 
-  const submenuItemOuter = createManualContainer('Submenu_Item_Outer');
+  const submenuItemOuter = createContainer('Submenu_Item_Outer');
   submenuItemOuter.setProperty('DropShadow', 'DropShadow.None');
   submenuItemOuter.setProperty('Height', '50');
   submenuItemOuter.setProperty('RadiusBottomLeft', '0');
@@ -51,7 +51,7 @@ export function createMenu() {
   submenuItemOuter.setProperty('RadiusTopRight', '0');
   submenuItemOuter.setProperty('Width', 'Parent.TemplateWidth');
 
-  const submenuItemInner = createManualContainer('Submenu_Item_Inner');
+  const submenuItemInner = createContainer('Submenu_Item_Inner');
   submenuItemInner.setProperty('DropShadow', 'DropShadow.None');
   submenuItemInner.setProperty(
     'Fill',
@@ -107,7 +107,7 @@ export function createMenu() {
   //
 
   // Menu_Item_Outer
-  const menuItemOuter = createManualContainer('Menu_Item_Outer');
+  const menuItemOuter = createContainer('Menu_Item_Outer');
 
   menuItemOuter.setProperty('DropShadow', 'DropShadow.None');
   menuItemOuter.setProperty('Height', '50');
@@ -122,7 +122,7 @@ export function createMenu() {
   menuItemOuter.setCssProperty('alignItems', 'center');
 
   // Menu_Item_Inner
-  const menuItemInner = createManualContainer('Menu_Item_Inner');
+  const menuItemInner = createContainer('Menu_Item_Inner');
 
   menuItemInner.setProperty('DropShadow', 'DropShadow.None');
   menuItemInner.setProperty(

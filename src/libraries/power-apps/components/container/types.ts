@@ -1,19 +1,13 @@
-export interface IVerticalContainerProperties {
+export interface IContainerProperties {
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: string;
+  ChildTabPriority: string;
   ContentLanguage: string;
   DropShadow: string;
   EnableChildFocus: string;
   Fill: string;
   Height: string;
-  LayoutAlignItems: string;
-  LayoutDirection: string;
-  LayoutGap: string;
-  LayoutJustifyContent: string;
-  LayoutOverflowX: string;
-  LayoutOverflowY: string;
-  LayoutWrap: string;
   PaddingBottom: string;
   PaddingLeft: string;
   PaddingRight: string;
