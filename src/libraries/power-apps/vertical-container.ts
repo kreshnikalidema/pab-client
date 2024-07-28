@@ -1,4 +1,7 @@
-export interface IHorizontalContainerProperties {
+import { Component } from './component';
+
+interface VerticalContainerProperties {
+  AlignInContainer: string;
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: string;
@@ -11,6 +14,7 @@ export interface IHorizontalContainerProperties {
   LayoutDirection: string;
   LayoutGap: string;
   LayoutJustifyContent: string;
+  LayoutMode: string;
   LayoutOverflowX: string;
   LayoutOverflowY: string;
   LayoutWrap: string;
@@ -26,4 +30,12 @@ export interface IHorizontalContainerProperties {
   Width: string;
   X: string;
   Y: string;
+}
+
+export function createVerticalContainer(componentName: string) {
+  return new Component<VerticalContainerProperties>({
+    componentName: componentName,
+    control: 'GroupContainer',
+    variant: 'verticalAutoLayoutContainer',
+  });
 }

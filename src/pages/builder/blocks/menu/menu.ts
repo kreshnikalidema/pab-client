@@ -1,9 +1,9 @@
-import { createGallery } from 'libraries/power-apps/components/gallery';
-import { createContainer } from 'libraries/power-apps/components/container';
-import { createImage } from 'libraries/power-apps/components/image';
-import { createLabel } from 'libraries/power-apps/components/label';
-import { createButton } from 'libraries/power-apps/components/button';
-import { createRectangle } from 'libraries/power-apps//components/rectangle';
+import { createGallery } from 'libraries/power-apps/gallery';
+import { createContainer } from 'libraries/power-apps/container';
+import { createImage } from 'libraries/power-apps/image';
+import { createLabel } from 'libraries/power-apps/label';
+import { createButton } from 'libraries/power-apps/button';
+import { createRectangle } from 'libraries/power-apps/rectangle';
 
 export function createMenu() {
   // Menu
@@ -20,12 +20,6 @@ export function createMenu() {
   menu.setProperty('TemplatePadding', '0');
   menu.setProperty('TemplateSize', '150');
 
-  menu.setCssProperty('display', 'flex');
-  menu.setCssProperty('justifyContent', 'center');
-  menu.setCssProperty('alignItems', 'center');
-  menu.setCssProperty('width', '100%');
-  menu.setCssProperty('height', '100%');
-
   // Submenu
   const submenu = createGallery('Submenu');
   submenu.setProperty('Items', 'ThisItem.Submenu');
@@ -39,8 +33,6 @@ export function createMenu() {
   submenu.setProperty('TemplateSize', '35');
   submenu.setProperty('Width', 'Parent.TemplateWidth');
   submenu.setProperty('Y', 'Menu_Item_Outer.Height');
-
-  submenu.setCssProperty('display', 'none');
 
   const submenuItemOuter = createContainer('Submenu_Item_Outer');
   submenuItemOuter.setProperty('DropShadow', 'DropShadow.None');
@@ -101,11 +93,6 @@ export function createMenu() {
   submenuItemOuter.appendChild(submenuItemInner);
   submenu.appendChild(submenuItemOuter);
 
-  //
-  //
-  //
-  //
-
   // Menu_Item_Outer
   const menuItemOuter = createContainer('Menu_Item_Outer');
 
@@ -116,10 +103,6 @@ export function createMenu() {
   menuItemOuter.setProperty('RadiusTopLeft', '0');
   menuItemOuter.setProperty('RadiusTopRight', '0');
   menuItemOuter.setProperty('Width', 'Parent.TemplateWidth');
-
-  menuItemOuter.setCssProperty('display', 'flex');
-  menuItemOuter.setCssProperty('justifyContent', 'center');
-  menuItemOuter.setCssProperty('alignItems', 'center');
 
   // Menu_Item_Inner
   const menuItemInner = createContainer('Menu_Item_Inner');
@@ -138,9 +121,6 @@ export function createMenu() {
   menuItemInner.setProperty('X', '(Parent.Width - Self.Width)/2');
   menuItemInner.setProperty('Y', '(Parent.Height - Self.Height)/2');
 
-  menuItemInner.setCssProperty('display', 'flex');
-  menuItemInner.setCssProperty('alignItems', 'center');
-
   // Menu_Item_Image
   const menuItemImage = createImage('Menu_Item_Image');
 
@@ -149,10 +129,6 @@ export function createMenu() {
   menuItemImage.setProperty('PaddingBottom', '8');
   menuItemImage.setProperty('PaddingTop', '8');
   menuItemImage.setProperty('Width', 'Self.Height');
-
-  menuItemImage.setCssProperty('width', '30px');
-  menuItemImage.setCssProperty('height', '30px');
-  menuItemImage.setCssProperty('marginRight', '10px');
 
   // Menu Item Label
   const menuItemLabel = createLabel('Menu_Item_Label');
@@ -166,8 +142,6 @@ export function createMenu() {
   menuItemLabel.setProperty('Size', '8');
   menuItemLabel.setProperty('Width', 'Parent.Width - Self.X');
   menuItemLabel.setProperty('X', 'Menu_Item_Image.Width');
-
-  menuItemLabel.setCssProperty('fontSize', '16px');
 
   // Menu Item Button
   const menuItemButton = createButton('Menu_Item_Button');
@@ -184,7 +158,6 @@ export function createMenu() {
   menuItemInner.appendChild(menuItemImage);
   menuItemInner.appendChild(menuItemLabel);
   menuItemInner.appendChild(menuItemButton);
-
   menuItemOuter.appendChild(menuItemInner);
 
   menu.appendChild(submenu);

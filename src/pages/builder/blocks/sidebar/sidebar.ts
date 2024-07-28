@@ -1,4 +1,4 @@
-import { createVerticalContainer } from 'libraries/power-apps/components/vertical-container';
+import { createVerticalContainer } from 'libraries/power-apps/vertical-container';
 import { createLogo } from '../logo';
 import { createProfileCard } from '../profile-card';
 import { createMenu } from '../menu';
@@ -24,16 +24,8 @@ export function createSidebar() {
   container.setProperty('X', '0');
   container.setProperty('Y', '0');
 
-  container.setCssProperty('display', 'flex');
-  container.setCssProperty('flexDirection', 'column');
-  container.setCssProperty('height', '100%');
-
-  // @ts-ignore
   container.appendChild(createLogo());
-
-  // @ts-ignore
   container.appendChild(createMenu());
-  // @ts-ignore
   container.appendChild(createProfileCard());
 
   return container;

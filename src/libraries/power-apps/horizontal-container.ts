@@ -1,4 +1,6 @@
-export interface IVerticalContainerProperties {
+import { Component } from './component';
+
+interface HorizontalContainerProperties {
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: string;
@@ -6,11 +8,14 @@ export interface IVerticalContainerProperties {
   DropShadow: string;
   EnableChildFocus: string;
   Fill: string;
+  FillPortions: string;
   Height: string;
   LayoutAlignItems: string;
   LayoutDirection: string;
   LayoutGap: string;
   LayoutJustifyContent: string;
+  LayoutMinWidth: string;
+  LayoutMode: string;
   LayoutOverflowX: string;
   LayoutOverflowY: string;
   LayoutWrap: string;
@@ -26,4 +31,12 @@ export interface IVerticalContainerProperties {
   Width: string;
   X: string;
   Y: string;
+}
+
+export function createHorizontalContainer(componentName: string) {
+  return new Component<HorizontalContainerProperties>({
+    componentName: componentName,
+    control: 'GroupContainer',
+    variant: 'horizontalAutoLayoutContainer',
+  });
 }

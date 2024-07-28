@@ -1,4 +1,6 @@
-export interface IRectangleProperties {
+import { Component } from './component';
+
+interface RectangleProperties {
   AccessibleLabel: string;
   BorderColor: string;
   BorderStyle: string;
@@ -19,4 +21,11 @@ export interface IRectangleProperties {
   Width: string;
   X: string;
   Y: string;
+}
+
+export function createRectangle(componentName: string) {
+  return new Component<RectangleProperties>({
+    componentName: componentName,
+    control: 'Rectangle',
+  });
 }

@@ -1,4 +1,7 @@
-export interface IContainerProperties {
+import { Component } from './component';
+
+interface ContainerProperties {
+  AlignInContainer: string;
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: string;
@@ -7,6 +10,7 @@ export interface IContainerProperties {
   DropShadow: string;
   EnableChildFocus: string;
   Fill: string;
+  FillPortions: string;
   Height: string;
   PaddingBottom: string;
   PaddingLeft: string;
@@ -20,4 +24,12 @@ export interface IContainerProperties {
   Width: string;
   X: string;
   Y: string;
+}
+
+export function createContainer(componentName: string) {
+  return new Component<ContainerProperties>({
+    componentName: componentName,
+    control: 'GroupContainer',
+    variant: 'manualLayoutContainer',
+  });
 }

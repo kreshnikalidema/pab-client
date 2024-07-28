@@ -1,5 +1,5 @@
-import { createHorizontalContainer } from 'libraries/power-apps/components/horizontal-container';
-import { createLabel } from 'libraries/power-apps/components/label';
+import { createHorizontalContainer } from 'libraries/power-apps/horizontal-container';
+import { createLabel } from 'libraries/power-apps/label';
 
 export function createHeader() {
   // Container
@@ -16,9 +16,7 @@ export function createHeader() {
   label1.setProperty('Text', 'Label 1');
   label1.setProperty('Color', 'Red');
 
-  // @ts-ignore
   column1.prependChild(label1);
-  container.appendChild(column1);
 
   // Column 2
   const column2 = createHorizontalContainer('Header_Column2');
@@ -30,8 +28,9 @@ export function createHeader() {
   label2.setProperty('Text', 'Label 2');
   label2.setProperty('Color', 'Red');
 
-  // @ts-ignore
   column2.prependChild(label2);
+
+  container.appendChild(column1);
   container.appendChild(column2);
 
   return container;

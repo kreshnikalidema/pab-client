@@ -1,6 +1,9 @@
-export interface IButtonProperties {
+import { Component } from './component';
+
+interface LabelProperties {
   Align: string;
-  AutoDisableOnSelect: string;
+  AlignInContainer: string;
+  AutoHeight: string;
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: string;
@@ -11,6 +14,7 @@ export interface IButtonProperties {
   DisabledFill: string;
   DisplayMode: string;
   Fill: string;
+  FillPortions: string;
   FocusedBorderColor: string;
   FocusedBorderThickness: string;
   Font: string;
@@ -20,7 +24,12 @@ export interface IButtonProperties {
   HoverColor: string;
   HoverFill: string;
   Italic: string;
+  LayoutMinHeight: string;
+  LayoutMinWidth: string;
+  LineHeight: string;
+  Live: string;
   OnSelect: string;
+  Overflow: string;
   PaddingBottom: string;
   PaddingLeft: string;
   PaddingRight: string;
@@ -28,10 +37,7 @@ export interface IButtonProperties {
   PressedBorderColor: string;
   PressedColor: string;
   PressedFill: string;
-  RadiusBottomLeft: string;
-  RadiusBottomRight: string;
-  RadiusTopLeft: string;
-  RadiusTopRight: string;
+  Role: string;
   Size: string;
   Strikethrough: string;
   TabIndex: string;
@@ -41,6 +47,16 @@ export interface IButtonProperties {
   VerticalAlign: string;
   Visible: string;
   Width: string;
+  Wrap: string;
   X: string;
   Y: string;
+}
+
+export function createLabel(componentName: string) {
+  const component = new Component<LabelProperties>({
+    componentName: componentName,
+    control: 'Label',
+  });
+
+  return component;
 }

@@ -1,4 +1,6 @@
-export interface IGalleryProperties {
+import { Component } from './component';
+
+interface GalleryProperties {
   AccessibleLabel: string;
   BorderColor: string;
   BorderStyle: string;
@@ -13,6 +15,9 @@ export interface IGalleryProperties {
   Height: string;
   ItemAccessibleLabel: string;
   Items: string;
+  Layout: string;
+  LayoutMinHeight: string;
+  LayoutMinWidth: string;
   LoadingSpinner: string;
   LoadingSpinnerColor: string;
   MaxTemplateSize: string;
@@ -30,4 +35,12 @@ export interface IGalleryProperties {
   Width: string;
   X: string;
   Y: string;
+}
+
+export function createGallery(componentName: string) {
+  return new Component<GalleryProperties>({
+    componentName: componentName,
+    control: 'Gallery',
+    variant: 'variableTemplateHeightGallery',
+  });
 }

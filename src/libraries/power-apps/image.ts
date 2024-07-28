@@ -1,5 +1,8 @@
-export interface IImageProperties {
+import { Component } from './component';
+
+interface ImageProperties {
   AccessibleLabel: string;
+  AlignInContainer: string;
   ApplyEXIFOrientation: string;
   AutoDisableOnSelect: string;
   BorderColor: string;
@@ -21,6 +24,7 @@ export interface IImageProperties {
   Image: string;
   ImagePosition: string;
   ImageRotation: string;
+  LayoutMinWidth: string;
   OnSelect: string;
   PaddingBottom: string;
   PaddingLeft: string;
@@ -39,4 +43,13 @@ export interface IImageProperties {
   Width: string;
   X: string;
   Y: string;
+}
+
+export function createImage(componentName: string) {
+  const component = new Component<ImageProperties>({
+    componentName: componentName,
+    control: 'Image',
+  });
+
+  return component;
 }

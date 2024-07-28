@@ -26,21 +26,12 @@ export const WorkspaceContent: React.FC<WorkspaceContentProps> = observer((props
     case 'GroupContainer':
     case 'Gallery': {
       return (
-        <DroppableZone onDrop={onDrop} style={container.style}>
+        <DroppableZone onDrop={onDrop} style={{}}>
           {container.children.map((child, index) => (
             <WorkspaceContent key={index} container={child} />
           ))}
         </DroppableZone>
       );
-    }
-
-    case 'Image': {
-      return <img style={container.style} src="https://picsum.photos/640" />;
-    }
-
-    case 'Label': {
-      // @ts-ignore
-      return <span style={container.style}>{container.properties.Text}</span>;
     }
 
     default: {

@@ -1,6 +1,5 @@
-import { CSSProperties } from 'react';
 import { makeAutoObservable, toJS } from 'mobx';
-import { IComponent, IProperties, IOptions, IYaml } from './types';
+import { IComponent, IProperties, IOptions, IYaml, IYamlCode } from './types';
 
 export class Component<T = unknown> implements IComponent<T> {
   componentName: string;
@@ -8,7 +7,6 @@ export class Component<T = unknown> implements IComponent<T> {
   variant?: string;
   properties: IProperties<T>;
   children: IComponent[];
-  cssProperties: CSSProperties;
 
   constructor(options: IOptions<T>) {
     this.componentName = options.componentName;
@@ -16,7 +14,6 @@ export class Component<T = unknown> implements IComponent<T> {
     this.variant = options.variant;
     this.properties = options.properties || {};
     this.children = options.children || [];
-    this.cssProperties = options.cssProperties || {};
     makeAutoObservable(this);
   }
 
@@ -24,34 +21,28 @@ export class Component<T = unknown> implements IComponent<T> {
     this.properties[key as keyof T] = `=${value}` as unknown as T[keyof T];
   }
 
-  setCssProperty<K extends keyof CSSProperties>(key: K, value: CSSProperties[K]): void {
-    this.cssProperties[key] = value;
-  }
-
-  appendChild(component: Component<T>): void {
+  appendChild(component: IComponent): void {
     this.children.push(component);
   }
 
-  prependChild(component: Component<unknown>): void {
+  prependChild(component: IComponent): void {
     this.children.unshift(component);
   }
 
-  removeChild(component: Component<T>): void {
+  removeChild(component: IComponent): void {
     this.children = this.children.filter((child) => child !== component);
   }
 
-  get style() {
-    return toJS(this.cssProperties);
-  }
-
   get yaml(): IYaml<T> {
+    const yamlCode: IYamlCode<T> = {
+      Control: this.control,
+      Variant: this.variant,
+      Properties: this.properties,
+      Children: this.children.map((child) => child.yaml),
+    };
+
     return toJS({
-      [this.componentName]: {
-        Control: this.control,
-        Variant: this.variant,
-        Properties: this.properties,
-        Children: this.children.map((child) => child.yaml),
-      },
+      [this.componentName]: yamlCode,
     });
   }
 }

@@ -1,7 +1,7 @@
-import { createHorizontalContainer } from 'libraries/power-apps/components/horizontal-container';
-import { createContainer } from 'libraries/power-apps/components/container';
-import { createImage } from 'libraries/power-apps/components/image';
-import { createLabel } from 'libraries/power-apps/components/label';
+import { createHorizontalContainer } from 'libraries/power-apps/horizontal-container';
+import { createContainer } from 'libraries/power-apps/container';
+import { createImage } from 'libraries/power-apps/image';
+import { createLabel } from 'libraries/power-apps/label';
 
 export function createProfileCard() {
   // Card
@@ -20,9 +20,6 @@ export function createProfileCard() {
   card.setProperty('RadiusTopLeft', '0');
   card.setProperty('RadiusTopRight', '0');
 
-  card.setCssProperty('display', 'flex');
-  card.setCssProperty('alignItems', 'center');
-
   // Avatar
   const avatar = createContainer('Profile_Avatar');
   avatar.setProperty('AlignInContainer', 'AlignInContainer.Center');
@@ -37,18 +34,11 @@ export function createProfileCard() {
   avatar.setProperty('RadiusTopRight', '35');
   avatar.setProperty('Width', '35');
 
-  avatar.setCssProperty('marginRight', '10px');
-
   // Image
   const image = createImage('Profile_Image');
   image.setProperty('Image', 'User().Image');
   image.setProperty('Height', 'Parent.Height');
   image.setProperty('Width', 'Parent.Width');
-
-  image.setCssProperty('width', '35px');
-  image.setCssProperty('height', '35px');
-  image.setCssProperty('borderRadius', '50%');
-  image.setCssProperty('objectFit', 'cover');
 
   avatar.appendChild(image);
 
@@ -68,11 +58,7 @@ export function createProfileCard() {
   label.setProperty('Size', '8');
   label.setProperty('Width', 'Parent.Width - Self.X');
 
-  label.setCssProperty('fontSize', '8px');
-
-  // @ts-ignore
   card.appendChild(avatar);
-  // @ts-ignore
   card.appendChild(label);
 
   return card;

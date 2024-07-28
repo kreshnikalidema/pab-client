@@ -1,6 +1,8 @@
-export interface ILabelProperties {
+import { Component } from './component';
+
+interface ButtonProperties {
   Align: string;
-  AutoHeight: string;
+  AutoDisableOnSelect: string;
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: string;
@@ -20,10 +22,7 @@ export interface ILabelProperties {
   HoverColor: string;
   HoverFill: string;
   Italic: string;
-  LineHeight: string;
-  Live: string;
   OnSelect: string;
-  Overflow: string;
   PaddingBottom: string;
   PaddingLeft: string;
   PaddingRight: string;
@@ -31,7 +30,10 @@ export interface ILabelProperties {
   PressedBorderColor: string;
   PressedColor: string;
   PressedFill: string;
-  Role: string;
+  RadiusBottomLeft: string;
+  RadiusBottomRight: string;
+  RadiusTopLeft: string;
+  RadiusTopRight: string;
   Size: string;
   Strikethrough: string;
   TabIndex: string;
@@ -41,7 +43,15 @@ export interface ILabelProperties {
   VerticalAlign: string;
   Visible: string;
   Width: string;
-  Wrap: string;
   X: string;
   Y: string;
+}
+
+export function createButton(componentName: string) {
+  const component = new Component<ButtonProperties>({
+    componentName: componentName,
+    control: 'Classic/Button',
+  });
+
+  return component;
 }
