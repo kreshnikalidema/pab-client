@@ -1,4 +1,4 @@
-export interface ILabelProperties {
+export interface IRectangleProperties {
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: number;
@@ -25,6 +25,9 @@ export interface ILabelProperties {
   X: number;
   Y: number;
 
+  LayoutMode: string;
+  Items: string;
+  Layout: string;
   Text: string;
   Color: string;
   AlignInContainer: string;
@@ -34,4 +37,11 @@ export interface ILabelProperties {
   LayoutMinHeight: string;
   LayoutMinWidth: string;
   Size: string;
+  OnSelect: string;
+  HoverFill: string;
+  PressedFill: string;
+
+  LoadingSpinner: string;
+  TemplatePadding: string;
+  TemplateSize: string;
 }

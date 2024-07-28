@@ -1,4 +1,4 @@
-export interface ILabelProperties {
+export interface IImageProperties {
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: number;
@@ -27,11 +27,8 @@ export interface ILabelProperties {
 
   Text: string;
   Color: string;
+
   AlignInContainer: string;
-  FillPortions: string;
-  Font: string;
-  FontWeight: string;
-  LayoutMinHeight: string;
   LayoutMinWidth: string;
-  Size: string;
+  Image: string;
 }

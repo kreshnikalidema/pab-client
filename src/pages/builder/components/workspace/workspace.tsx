@@ -12,7 +12,7 @@ export const Workspace = observer<WorkspaceProps>((props) => {
   const { container } = props;
   return (
     <WorkspaceContainer>
-      <WorkspaceContent container={container} first />
+      <WorkspaceContent container={container} />
     </WorkspaceContainer>
   );
 });

@@ -6,9 +6,12 @@ import { items } from './sidebar';
 import { Instructions } from './components/instructions';
 import { createVerticalContainer } from 'libraries/power-apps/components';
 
-const container = createVerticalContainer();
+const container = createVerticalContainer('Test');
 
-container.setNamespace('Test');
+container.setCssProperty('height', '100%');
+container.setCssProperty('margin', '0');
+container.setCssProperty('display', 'flex');
+container.setCssProperty('flexDirection', 'column');
 
 export const Builder: React.FC = () => {
   return (

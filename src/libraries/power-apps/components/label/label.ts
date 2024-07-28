@@ -1,8 +1,12 @@
 import { Component } from 'libraries/power-apps';
 import { ILabelProperties } from './types';
 
-export function createLabel() {
-  const component = new Component<ILabelProperties>('Label');
+export function createLabel(componentName: string) {
+  const component = new Component<ILabelProperties>({
+    componentName: componentName,
+    control: 'Label',
+    variant: 'verticalAutoLayoutContainer',
+  });
 
   return component;
 }

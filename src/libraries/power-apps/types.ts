@@ -1,40 +1,61 @@
 import { CSSProperties } from 'react';
 
-export type Properties<T> = {
+export type IProperties<T> = {
   [K in keyof T]?: T[K];
 };
 
-export type StyleMapper<T> = {
-  [K in keyof T]: (value: T[K]) => CSSProperties;
-};
+export interface IYamlCode<T> {
+  Control?: string;
 
-export interface StyleProps {
-  BorderColor: string;
-  BorderStyle: string;
-  BorderThickness: number;
-  ContentLanguage: string;
-  DropShadow: string;
-  EnableChildFocus: boolean;
-  Fill: string;
-  Height: number;
-  LayoutAlignItems: string;
-  LayoutDirection: string;
-  LayoutGap: number;
-  LayoutJustifyContent: string;
-  LayoutOverflowX: string;
-  LayoutOverflowY: string;
-  LayoutWrap: string;
-  PaddingBottom: number;
-  PaddingLeft: number;
-  PaddingRight: number;
-  PaddingTop: number;
-  RadiusBottomLeft: number;
-  RadiusBottomRight: number;
-  RadiusTopLeft: number;
-  RadiusTopRight: number;
-  Visible: boolean;
-  Width: number;
-  X: number;
-  Y: number;
-  FillPortions: number;
+  Variant?: string;
+
+  Properties: IProperties<T>;
+
+  Children?: IYaml<T>[];
+}
+
+export interface IYaml<T> {
+  [componentName: string]: IYamlCode<T>;
+}
+
+export interface IComponent<T = {}> {
+  componentName: string;
+
+  control?: string;
+
+  variant?: string;
+
+  properties: IProperties<T>;
+
+  cssProperties: CSSProperties;
+
+  children: IComponent<T>[];
+
+  setProperty<K extends keyof T>(key: K, value: string): void;
+
+  setCssProperty<K extends keyof CSSProperties>(key: K, value: CSSProperties[K]): void;
+
+  appendChild(child: IComponent<T>): void;
+
+  prependChild(child: IComponent<T>): void;
+
+  removeChild(child: IComponent<T>): void;
+
+  readonly style: CSSProperties;
+
+  readonly yaml: IYaml<T>;
+}
+
+export interface IOptions<T> {
+  componentName: string;
+
+  control?: string;
+
+  variant?: string;
+
+  properties?: IProperties<T>;
+
+  cssProperties?: CSSProperties;
+
+  children?: IComponent<T>[];
 }

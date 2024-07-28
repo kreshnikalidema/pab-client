@@ -1,4 +1,4 @@
-export interface ILabelProperties {
+export interface IButtonProperties {
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: number;
@@ -34,4 +34,8 @@ export interface ILabelProperties {
   LayoutMinHeight: string;
   LayoutMinWidth: string;
   Size: string;
+
+  OnSelect: string;
+  HoverFill: string;
+  PressedFill: string;
 }

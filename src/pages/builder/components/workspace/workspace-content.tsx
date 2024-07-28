@@ -5,34 +5,46 @@ import { Component } from 'libraries/power-apps';
 
 interface WorkspaceContentProps {
   container: Component;
-  first: boolean;
+  // first: boolean;
 }
 
-export const WorkspaceContent = observer<WorkspaceContentProps>((props) => {
-  const { container, first } = props;
+interface DroppedItem {
+  fn: () => Component;
+}
+
+export const WorkspaceContent: React.FC<WorkspaceContentProps> = observer((props) => {
+  const { container } = props;
 
   const onDrop = React.useCallback(
-    (item: any) => {
+    (item: DroppedItem) => {
       container.appendChild(item.fn());
     },
     [container]
   );
 
-  // @ts-ignore
-  if (container.properties?.Text) {
-    return (
-      <span style={container.styles}>
-        {/* @ts-ignore */}
-        {container.properties?.Text}
-      </span>
-    );
-  }
+  switch (container.control) {
+    case 'GroupContainer':
+    case 'Gallery': {
+      return (
+        <DroppableZone onDrop={onDrop} style={container.style}>
+          {container.children.map((child, index) => (
+            <WorkspaceContent key={index} container={child} />
+          ))}
+        </DroppableZone>
+      );
+    }
 
-  return (
-    <DroppableZone onDrop={onDrop} style={container.styles} first={first}>
-      {container.children.map((child, index) => (
-        <WorkspaceContent key={index} container={child} first={false} />
-      ))}
-    </DroppableZone>
-  );
+    case 'Image': {
+      return <img style={container.style} src="https://picsum.photos/640" />;
+    }
+
+    case 'Label': {
+      // @ts-ignore
+      return <span style={container.style}>{container.properties.Text}</span>;
+    }
+
+    default: {
+      return null;
+    }
+  }
 });

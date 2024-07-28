@@ -17,11 +17,7 @@ export const CodeDisplay: React.FC<CodeDisplayProps> = ({ code, language }) => {
         {code}
       </SyntaxHighlighter>
       <CopyToClipboard text={code}>
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{ position: 'absolute', top: 8, right: 8 }}
-        >
+        <Button variant="contained" color="primary" sx={{ position: 'absolute', top: 8, right: 8 }}>
           Copy
         </Button>
       </CopyToClipboard>

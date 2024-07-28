@@ -1,4 +1,4 @@
-export interface IHorizontalContainerProperties {
+export interface IManualContainerProperties {
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: number;
@@ -25,7 +25,19 @@ export interface IHorizontalContainerProperties {
   X: number;
   Y: number;
 
-  FillPortions: number;
   LayoutMode: string;
+
+  Text: string;
+  Color: string;
   AlignInContainer: string;
+  FillPortions: string;
+  Font: string;
+  FontWeight: string;
+  LayoutMinHeight: string;
+  LayoutMinWidth: string;
+  Size: string;
+
+  OnSelect: string;
+  HoverFill: string;
+  PressedFill: string;
 }

@@ -25,6 +25,19 @@ export interface IHorizontalContainerProperties {
   X: number;
   Y: number;
 
-  FillPortions: number;
   LayoutMode: string;
+
+  Text: string;
+  Color: string;
+  AlignInContainer: string;
+  FillPortions: string;
+  Font: string;
+  FontWeight: string;
+  LayoutMinHeight: string;
+  LayoutMinWidth: string;
+  Size: string;
+
+  OnSelect: string;
+  HoverFill: string;
+  PressedFill: string;
 }

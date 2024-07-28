@@ -1,72 +1,67 @@
-import { makeAutoObservable } from 'mobx';
-import { transformToStyles } from './helpers';
+import { CSSProperties } from 'react';
+import { makeAutoObservable, toJS } from 'mobx';
+import { IComponent, IProperties, IOptions, IYaml } from './types';
 
-type Properties<T> = {
-  [K in keyof T]?: T[K];
-};
-
-export class Component<T = {}> {
-  namespace?: string;
-
+export class Component<T = {}> implements IComponent<T> {
+  componentName: string;
   control?: string;
-
   variant?: string;
+  properties: IProperties<T>;
+  children: IComponent<T>[];
+  cssProperties: CSSProperties;
 
-  properties: Properties<T>;
-
-  children: Component<T>[];
-
-  constructor(control?: string, variant?: string) {
-    this.control = control;
-
-    this.variant = variant;
-
-    this.properties = {};
-
-    this.children = [];
-
+  constructor(options: IOptions<T>) {
+    this.componentName = options.componentName;
+    this.control = options.control;
+    this.variant = options.variant;
+    this.properties = options.properties || {};
+    this.children = options.children || [];
+    this.cssProperties = options.cssProperties || {};
     makeAutoObservable(this);
   }
 
-  setNamespace(namespace: string) {
-    this.namespace = namespace;
-  }
-
-  setProperty<K extends keyof T>(key: K, value: string) {
+  setProperty<K extends keyof T>(key: K, value: string): void {
     this.properties[key as keyof T] = `=${value}` as unknown as T[keyof T];
   }
 
-  appendChild(child: Component<T>) {
-    this.children.push(child);
+  setCssProperty<K extends keyof CSSProperties>(key: K, value: CSSProperties[K]): void {
+    this.cssProperties[key] = value;
   }
 
-  prependChild(child: Component<T>) {
-    this.children.unshift(child);
+  appendChild(component: Component<T>): void {
+    this.children.push(component);
   }
 
-  removeChild(child: Component<T>) {
-    this.children = this.children.filter((c) => c !== child);
+  prependChild(component: Component<T>): void {
+    this.children.unshift(component);
   }
 
-  get styles() {
-    return transformToStyles(this.properties);
+  removeChild(component: Component<T>): void {
+    this.children = this.children.filter((child) => child !== component);
   }
 
-  get yaml(): {} {
-    if (this.namespace) {
-      return {
-        [this.namespace]: {
+  get style() {
+    return toJS(this.cssProperties);
+  }
+
+  get yaml(): IYaml<T> {
+    if (this.children.length === 0) {
+      return toJS({
+        [this.componentName]: {
           Control: this.control,
-
           Variant: this.variant,
-
           Properties: this.properties,
-
-          Children: this.children.map((child) => child.yaml),
         },
-      };
-    } else {
-      return {};
+      });
     }
+
+    return toJS({
+      [this.componentName]: {
+        Control: this.control,
+        Variant: this.variant,
+        Properties: this.properties,
+        Children: this.children.map((child) => child.yaml),
+      },
+    });
   }
 }
