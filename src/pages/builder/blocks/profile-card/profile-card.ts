@@ -7,12 +7,11 @@ export function createProfileCard() {
   // Card
   const card = createHorizontalContainer('Profile_Card');
 
-    // @ts-ignore
-    card.setVariable('profileCardHeight', 40)
+  // @ts-ignore
+  card.setVariable('profileCardHeight', 40);
 
-        // @ts-ignore
-    card.setVariable('profileCardPadding', 5)
-
+  // @ts-ignore
+  card.setVariable('profileCardPadding', 5);
 
   card.setProperty('DropShadow', 'DropShadow.None');
   card.setProperty('FillPortions', '0');

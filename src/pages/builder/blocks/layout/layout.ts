@@ -19,11 +19,9 @@ export function createLayout() {
   // Sidebar
   const left = createContainer('Layout_Left');
 
-      // @ts-ignore
-      left.setVariable('layoutLeftWidth', 150)
+  // @ts-ignore
+  left.setVariable('layoutLeftWidth', 150);
 
-
-      
   left.setProperty('AlignInContainer', 'AlignInContainer.SetByContainer');
   left.setProperty('BorderStyle', 'BorderStyle.None');
   left.setProperty('DropShadow', 'DropShadow.None');

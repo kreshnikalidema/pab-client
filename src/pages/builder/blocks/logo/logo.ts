@@ -1,16 +1,23 @@
 import { createImage } from 'libraries/power-apps/image';
 
+interface LogoVariables {
+  logoHeight: number;
+  logoPaddingX: number;
+  logoPaddingY: number;
+}
+
 export function createLogo() {
-  const image = createImage('Logo');
+  const logo = createImage<LogoVariables>('Logo');
 
-  // @ts-ignore
-  image.setVariable('logoHeight', '30')
+  logo.setVariable('logoHeight', 30);
+  logo.setVariable('logoPaddingX', 0);
+  logo.setVariable('logoPaddingY', 0);
 
-  image.setProperty('AlignInContainer', 'AlignInContainer.Stretch');
-  image.setProperty('Height', '30');
-  image.setProperty('LayoutMinWidth', '0');
-  image.setProperty('PaddingBottom', '0');
-  image.setProperty('PaddingTop', '0');
+  logo.setProperty('AlignInContainer', 'AlignInContainer.Stretch');
+  logo.setProperty('Height', '30');
+  logo.setProperty('LayoutMinWidth', '0');
+  logo.setProperty('PaddingBottom', '0');
+  logo.setProperty('PaddingTop', '0');
 
-  return image;
+  return logo;
 }

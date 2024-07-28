@@ -45,8 +45,8 @@ interface ImageProperties {
   Y: string;
 }
 
-export function createImage(componentName: string) {
-  const component = new Component<ImageProperties>({
+export function createImage<P>(componentName: string) {
+  const component = new Component<ImageProperties, P>({
     componentName: componentName,
     control: 'Image',
   });
