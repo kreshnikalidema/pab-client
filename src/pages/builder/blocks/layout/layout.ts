@@ -1,56 +1,67 @@
 import { createHorizontalContainer } from 'libraries/power-apps/horizontal-container';
 import { createVerticalContainer } from 'libraries/power-apps/vertical-container';
 import { createContainer } from 'libraries/power-apps/container';
+import { LayoutContainer } from './layout-container';
+import { LayoutLeft, LayoutLeftVariables } from './layout-left';
+import { LayoutBody, LayoutBodyVariables } from './layout-body';
 
 export function createLayout() {
-  // Container
-  const container = createHorizontalContainer('Layout_Container');
-  container.setProperty('BorderStyle', 'BorderStyle.None');
-  container.setProperty('DropShadow', 'DropShadow.None');
-  container.setProperty('Height', 'Parent.Height');
-  container.setProperty('LayoutAlignItems', 'LayoutAlignItems.Stretch');
-  container.setProperty('LayoutMode', 'LayoutMode.Auto');
-  container.setProperty('RadiusBottomLeft', '0');
-  container.setProperty('RadiusBottomRight', '0');
-  container.setProperty('RadiusTopLeft', '0');
-  container.setProperty('RadiusTopRight', '0');
-  container.setProperty('Width', 'Parent.Width');
+  // Layout Container
+  const layoutContainer = createHorizontalContainer('Layout_Container');
+  layoutContainer.setProperty('BorderStyle', 'BorderStyle.None');
+  layoutContainer.setProperty('DropShadow', 'DropShadow.None');
+  layoutContainer.setProperty('Height', 'Parent.Height');
+  layoutContainer.setProperty('LayoutAlignItems', 'LayoutAlignItems.Stretch');
+  layoutContainer.setProperty('LayoutMode', 'LayoutMode.Auto');
+  layoutContainer.setProperty('RadiusBottomLeft', '0');
+  layoutContainer.setProperty('RadiusBottomRight', '0');
+  layoutContainer.setProperty('RadiusTopLeft', '0');
+  layoutContainer.setProperty('RadiusTopRight', '0');
+  layoutContainer.setProperty('Width', 'Parent.Width');
 
-  // Sidebar
-  const left = createContainer('Layout_Left');
+  layoutContainer.setComponentView(LayoutContainer);
 
-  // @ts-ignore
-  left.setVariable('layoutLeftWidth', 150);
+  // Layout Left
+  const layoutLeft = createContainer<LayoutLeftVariables>('Layout_Left');
+  layoutLeft.setVariable('layoutLeftWidth', 150);
+  layoutLeft.setVariable('layoutLeftFill', 'RGBA(0, 0, 0, 1)');
 
-  left.setProperty('AlignInContainer', 'AlignInContainer.SetByContainer');
-  left.setProperty('BorderStyle', 'BorderStyle.None');
-  left.setProperty('DropShadow', 'DropShadow.None');
-  left.setProperty('FillPortions', '0');
-  left.setProperty('RadiusBottomLeft', '0');
-  left.setProperty('RadiusBottomRight', '0');
-  left.setProperty('RadiusTopLeft', '0');
-  left.setProperty('RadiusTopRight', '0');
-  left.setProperty('Width', '150');
+  layoutLeft.setProperty('AlignInContainer', 'AlignInContainer.SetByContainer');
+  layoutLeft.setProperty('BorderStyle', 'BorderStyle.None');
+  layoutLeft.setProperty('DropShadow', 'DropShadow.None');
+  layoutLeft.setProperty('FillPortions', '0');
+  layoutLeft.setProperty('RadiusBottomLeft', '0');
+  layoutLeft.setProperty('RadiusBottomRight', '0');
+  layoutLeft.setProperty('RadiusTopLeft', '0');
+  layoutLeft.setProperty('RadiusTopRight', '0');
+  layoutLeft.setProperty('Width', '150');
 
-  // Content
-  const body = createVerticalContainer('Layout_Body');
-  body.setProperty('AlignInContainer', 'AlignInContainer.SetByContainer');
-  body.setProperty('BorderStyle', 'BorderStyle.None');
-  body.setProperty('DropShadow', 'DropShadow.None');
-  body.setProperty('LayoutDirection', 'LayoutDirection.Vertical');
-  body.setProperty('LayoutGap', '10');
-  body.setProperty('LayoutMode', 'LayoutMode.Auto');
-  body.setProperty('PaddingBottom', '20');
-  body.setProperty('PaddingLeft', '20');
-  body.setProperty('PaddingRight', '20');
-  body.setProperty('PaddingTop', '20');
-  body.setProperty('RadiusBottomLeft', '0');
-  body.setProperty('RadiusBottomRight', '0');
-  body.setProperty('RadiusTopLeft', '0');
-  body.setProperty('RadiusTopRight', '0');
+  layoutLeft.setComponentView(LayoutLeft);
 
-  container.appendChild(left);
-  container.appendChild(body);
+  // Layout Body
+  const layoutBody =
+    createVerticalContainer<LayoutBodyVariables>('Layout_Body');
+  layoutBody.setVariable('layoutBodyFill', 'RGBA(255, 255, 255, 1)');
 
-  return container;
+  layoutBody.setProperty('AlignInContainer', 'AlignInContainer.SetByContainer');
+  layoutBody.setProperty('BorderStyle', 'BorderStyle.None');
+  layoutBody.setProperty('DropShadow', 'DropShadow.None');
+  layoutBody.setProperty('LayoutDirection', 'LayoutDirection.Vertical');
+  layoutBody.setProperty('LayoutGap', '10');
+  layoutBody.setProperty('LayoutMode', 'LayoutMode.Auto');
+  layoutBody.setProperty('PaddingBottom', '20');
+  layoutBody.setProperty('PaddingLeft', '20');
+  layoutBody.setProperty('PaddingRight', '20');
+  layoutBody.setProperty('PaddingTop', '20');
+  layoutBody.setProperty('RadiusBottomLeft', '0');
+  layoutBody.setProperty('RadiusBottomRight', '0');
+  layoutBody.setProperty('RadiusTopLeft', '0');
+  layoutBody.setProperty('RadiusTopRight', '0');
+
+  layoutBody.setComponentView(LayoutBody);
+
+  layoutContainer.appendChild(layoutLeft);
+  layoutContainer.appendChild(layoutBody);
+
+  return layoutContainer;
 }

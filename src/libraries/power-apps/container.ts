@@ -24,10 +24,12 @@ interface ContainerProperties {
   Width: string;
   X: string;
   Y: string;
+  LayoutMinHeight: string;
+  LayoutMinWidth: string;
 }
 
-export function createContainer(componentName: string) {
-  return new Component<ContainerProperties>({
+export function createContainer<P>(componentName: string) {
+  return new Component<ContainerProperties, P>({
     componentName: componentName,
     control: 'GroupContainer',
     variant: 'manualLayoutContainer',

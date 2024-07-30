@@ -5,8 +5,11 @@ import { Workspace } from './components/workspace';
 import { items } from './sidebar';
 import { Instructions } from './components/instructions';
 import { createVerticalContainer } from 'libraries/power-apps/vertical-container';
+import { DroppableContainer } from 'components/droppable-zone/droppable-container';
 
 const container = createVerticalContainer('Test');
+
+container.setComponentView(DroppableContainer);
 
 // container.setCssProperty('height', '100%');
 // container.setCssProperty('margin', '0');

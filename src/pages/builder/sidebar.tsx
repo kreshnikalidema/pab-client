@@ -1,32 +1,33 @@
 import * as Icon from '@mui/icons-material';
 import { createLayout } from './blocks/layout';
 import { createSidebar } from './blocks/sidebar';
-import { createProfileCard } from './blocks/profile-card';
-import { createMenu } from './blocks/menu';
+import { createLogo } from './blocks/logo';
+import { createHeader } from './blocks/header';
+import { createSearchbox } from './blocks/searchbox';
 
 export const items = [
-  { label: '1 Section', icon: Icon.ViewColumn, fn: createLayout },
-  { label: '1/2 Section', icon: Icon.ViewColumn, fn: createSidebar },
-  { label: '1/3 Section', icon: Icon.ViewColumn, fn: createProfileCard },
-  { label: '3/7 Section', icon: Icon.ViewColumn, fn: createMenu },
+  { label: 'Layout', icon: Icon.ViewColumn, fn: createLayout },
+  { label: 'Sidebar', icon: Icon.ViewColumn, fn: createSidebar },
+  { label: 'Logo', icon: Icon.ViewColumn, fn: createLogo },
+  { label: 'Header', icon: Icon.ViewColumn, fn: createHeader },
   {
     label: 'Button',
     icon: Icon.RadioButtonChecked,
-    fn: createSidebar,
+    fn: createLogo,
   },
-  { label: 'Divider', icon: Icon.HorizontalRule, fn: createSidebar },
-  { label: 'Hero section', icon: Icon.ViewQuilt, fn: createSidebar },
-  { label: 'Text', icon: Icon.TextFields, fn: createSidebar },
+  { label: 'Searchbox', icon: Icon.HorizontalRule, fn: createSearchbox },
+  { label: 'Hero section', icon: Icon.ViewQuilt, fn: createLogo },
+  { label: 'Text', icon: Icon.TextFields, fn: createLogo },
   {
     label: 'Text section',
     icon: Icon.FormatTextdirectionLToR,
-    fn: createSidebar,
+    fn: createLogo,
   },
-  { label: 'Link', icon: Icon.InsertLink, fn: createSidebar },
-  { label: 'Image', icon: Icon.Image, fn: createSidebar },
-  { label: 'Video', icon: Icon.Videocam, fn: createSidebar },
-  { label: 'Map', icon: Icon.Map, fn: createSidebar },
-  { label: 'Quote', icon: Icon.FormatQuote, fn: createSidebar },
-  { label: 'Grid items', icon: Icon.ViewModule, fn: createSidebar },
-  { label: 'List items', icon: Icon.List, fn: createSidebar },
+  { label: 'Link', icon: Icon.InsertLink, fn: createLogo },
+  { label: 'Image', icon: Icon.Image, fn: createLogo },
+  { label: 'Video', icon: Icon.Videocam, fn: createLogo },
+  { label: 'Map', icon: Icon.Map, fn: createLogo },
+  { label: 'Quote', icon: Icon.FormatQuote, fn: createLogo },
+  { label: 'Grid items', icon: Icon.ViewModule, fn: createLogo },
+  { label: 'List items', icon: Icon.List, fn: createLogo },
 ];

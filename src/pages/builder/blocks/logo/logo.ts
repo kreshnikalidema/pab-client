@@ -1,4 +1,5 @@
 import { createImage } from 'libraries/power-apps/image';
+import { LogoImage } from './logo-image';
 
 interface LogoVariables {
   logoHeight: number;
@@ -18,6 +19,8 @@ export function createLogo() {
   logo.setProperty('LayoutMinWidth', '0');
   logo.setProperty('PaddingBottom', '0');
   logo.setProperty('PaddingTop', '0');
+
+  logo.setComponentView(LogoImage);
 
   return logo;
 }

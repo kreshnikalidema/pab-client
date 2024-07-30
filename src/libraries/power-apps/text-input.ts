@@ -1,6 +1,6 @@
 import { Component } from './component';
 
-interface HorizontalContainerProperties {
+interface TextInputProperties {
   BorderColor: string;
   BorderStyle: string;
   BorderThickness: string;
@@ -34,12 +34,22 @@ interface HorizontalContainerProperties {
 
   AlignInContainer: string;
   LayoutMinHeight: string;
+  Default: string;
+  HintText: string;
+  Color: string;
+  DisabledBorderColor: string;
+  Font: string;
+  HoverBorderColor: string;
+  HoverFill: string;
+  PressedBorderColor: string;
+  PressedColor: string;
+  PressedFill: string;
+  Size: string;
 }
 
-export function createHorizontalContainer<P>(componentName: string) {
-  return new Component<HorizontalContainerProperties, P>({
+export function createTextInput<P>(componentName: string) {
+  return new Component<TextInputProperties, P>({
     componentName: componentName,
-    control: 'GroupContainer',
-    variant: 'horizontalAutoLayoutContainer',
+    control: 'Classic/TextInput',
   });
 }
