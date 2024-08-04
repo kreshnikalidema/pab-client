@@ -48,8 +48,9 @@ interface TextInputProperties {
 }
 
 export function createTextInput<P>(componentName: string) {
-  return new Component<TextInputProperties, P>({
+  return new Component({
     componentName: componentName,
+    componentView: 'div',
     control: 'Classic/TextInput',
   });
 }

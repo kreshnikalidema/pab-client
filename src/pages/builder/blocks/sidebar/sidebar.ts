@@ -36,10 +36,20 @@ export function createSidebar() {
   sidebarContainer.setProperty('X', '0');
   sidebarContainer.setProperty('Y', '0');
 
-  sidebarContainer.setComponentView(SidebarContainer);
+  sidebarContainer.setComponentView('div');
+  sidebarContainer.setStyle('alignItems', 'center');
+  sidebarContainer.setStyle('backgroundColor', '#f0f0f0');
+  sidebarContainer.setStyle('display', 'flex');
+  sidebarContainer.setStyle('flexDirection', 'column');
+  sidebarContainer.setStyle('height', '100%');
+  sidebarContainer.setStyle('paddingBottom', '10px');
+  sidebarContainer.setStyle('paddingLeft', '10px');
+  sidebarContainer.setStyle('paddingRight', '10px');
+  sidebarContainer.setStyle('paddingTop', '10px');
+  sidebarContainer.setStyle('width', '100%');
+  sidebarContainer.setStyle('justifyContent', 'space-between');
 
   sidebarContainer.appendChild(createLogo());
-  // container.appendChild(createMenu());
   sidebarContainer.appendChild(createProfileCard());
 
   return sidebarContainer;

@@ -24,8 +24,9 @@ interface RectangleProperties {
 }
 
 export function createRectangle(componentName: string) {
-  return new Component<RectangleProperties>({
+  return new Component({
     componentName: componentName,
+    componentView: 'div',
     control: 'Rectangle',
   });
 }

@@ -18,14 +18,15 @@ export function createLayout() {
   layoutContainer.setProperty('RadiusTopLeft', '0');
   layoutContainer.setProperty('RadiusTopRight', '0');
   layoutContainer.setProperty('Width', 'Parent.Width');
-
-  layoutContainer.setComponentView(LayoutContainer);
+  layoutContainer.setComponentView('div');
+  layoutContainer.setStyle('display', 'flex');
+  layoutContainer.setStyle('height', '100%');
+  layoutContainer.setStyle('width', '100%');
 
   // Layout Left
   const layoutLeft = createContainer<LayoutLeftVariables>('Layout_Left');
   layoutLeft.setVariable('layoutLeftWidth', 150);
   layoutLeft.setVariable('layoutLeftFill', 'RGBA(0, 0, 0, 1)');
-
   layoutLeft.setProperty('AlignInContainer', 'AlignInContainer.SetByContainer');
   layoutLeft.setProperty('BorderStyle', 'BorderStyle.None');
   layoutLeft.setProperty('DropShadow', 'DropShadow.None');
@@ -35,8 +36,9 @@ export function createLayout() {
   layoutLeft.setProperty('RadiusTopLeft', '0');
   layoutLeft.setProperty('RadiusTopRight', '0');
   layoutLeft.setProperty('Width', '150');
-
-  layoutLeft.setComponentView(LayoutLeft);
+  layoutLeft.setComponentView('div');
+  layoutLeft.setStyle('backgroundColor', 'white');
+  layoutLeft.setStyle('width', '150px');
 
   // Layout Body
   const layoutBody =
@@ -57,8 +59,9 @@ export function createLayout() {
   layoutBody.setProperty('RadiusBottomRight', '0');
   layoutBody.setProperty('RadiusTopLeft', '0');
   layoutBody.setProperty('RadiusTopRight', '0');
-
-  layoutBody.setComponentView(LayoutBody);
+  layoutBody.setComponentView('div');
+  layoutBody.setStyle('backgroundColor', 'white');
+  layoutBody.setStyle('flexGrow', '1');
 
   layoutContainer.appendChild(layoutLeft);
   layoutContainer.appendChild(layoutBody);

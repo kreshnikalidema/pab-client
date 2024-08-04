@@ -20,7 +20,10 @@ export function createHeader() {
   headerContainer.setProperty('RadiusTopLeft', '0');
   headerContainer.setProperty('RadiusTopRight', '0');
 
-  headerContainer.setComponentView(HeaderContainer);
+  headerContainer.setComponentView('div');
+
+  headerContainer.setStyle('display', 'flex');
+  headerContainer.setStyle('height', '60px');
 
   // Header Left
   const headerLeft = createHorizontalContainer('Header_Left');
@@ -38,12 +41,20 @@ export function createHeader() {
   headerLeft.setProperty('RadiusBottomRight', '0');
   headerLeft.setProperty('RadiusTopLeft', '0');
   headerLeft.setProperty('RadiusTopRight', '0');
-  headerLeft.setComponentView(HeaderLeft);
+  headerLeft.setComponentView('div');
+  headerLeft.setStyle('flex', '1');
+  headerLeft.setStyle('display', 'flex');
+  headerLeft.setStyle('alignItems', 'center');
+  headerLeft.setStyle('padding', '0 20px');
+  headerLeft.setStyle('justifyContent', 'flex-start');
 
   const headerLabel = createLabel('HeaderLabel');
   headerLabel.setProperty('Text', '"Header Label"');
   headerLabel.setProperty('Color', 'Color.Black');
-  headerLabel.setComponentView(HeaderLabel);
+  headerLabel.setComponentView('div');
+  headerLabel.setStyle('fontSize', '12px');
+  headerLabel.setStyle('color', '#333');
+  headerLabel.setStyle('marginLeft', '10px');
 
   headerLeft.prependChild(headerLabel);
 
@@ -66,7 +77,12 @@ export function createHeader() {
   headerRight.setProperty('RadiusBottomRight', '0');
   headerRight.setProperty('RadiusTopLeft', '0');
   headerRight.setProperty('RadiusTopRight', '0');
-  headerRight.setComponentView(HeaderRight);
+  headerRight.setStyle('flex', '1');
+  headerRight.setStyle('display', 'flex');
+  headerRight.setStyle('alignItems', 'center');
+  headerRight.setStyle('padding', '0 20px');
+  headerRight.setStyle('justifyContent', 'flex-end');
+  headerRight.setComponentView('div');
 
   headerContainer.appendChild(headerLeft);
   headerContainer.appendChild(headerRight);

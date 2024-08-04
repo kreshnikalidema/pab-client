@@ -48,8 +48,9 @@ interface ButtonProperties {
 }
 
 export function createButton(componentName: string) {
-  const component = new Component<ButtonProperties>({
+  const component = new Component({
     componentName: componentName,
+    componentView: 'div',
     control: 'Classic/Button',
   });
 

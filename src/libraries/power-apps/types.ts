@@ -1,47 +1,54 @@
-export type IProperties<T> = {
-  [K in keyof T]?: T[K];
+export type IProperties = {
+  [key: string]: any;
 };
 
-export type IVariables<P> = {
-  [K in keyof P]?: P[K];
+export type IVariables = {
+  [key: string]: any;
 };
 
-export interface IYamlCode<T, P> {
+export type IStyles = {
+  [key: string]: any;
+};
+
+export interface IYamlCode {
   Control?: string;
   Variant?: string;
-  Properties: IProperties<T>;
-  Children?: IYaml<T, P>[];
+  Properties: IProperties;
+  Styles?: IStyles;
+  Children?: IYaml[];
 }
 
-export interface IYaml<T, P> {
-  [componentName: string]: IYamlCode<T, P>;
+export interface IYaml {
+  [componentName: string]: IYamlCode;
 }
 
-export interface IComponent<T = unknown, P = unknown> {
+export interface IComponent {
   componentName: string;
-  componentView?: React.FC<any>;
+  componentView: string;
   control?: string;
   variant?: string;
-  variables: IVariables<P>;
-  properties: IProperties<T>;
-  children: IComponent<any, any>[];
-  setProperty<K extends keyof T>(key: K, value: string): void;
-  setVariable<K extends keyof P>(key: K, value: P[K]): void;
-  appendChild<U, V>(child: IComponent<U, V>): void;
-  prependChild<U, V>(child: IComponent<U, V>): void;
-  removeChild<U, V>(child: IComponent<U, V>): void;
-  setComponentView(view: React.FC<any>): void;
-  readonly theme: IVariables<P>;
-  readonly yaml: IYaml<T, P>;
-  readonly View: React.FC<any>;
+  properties: IProperties;
+  styles: IStyles;
+  variables: IVariables;
+  children: IComponent[];
+  setProperty(key: string, value: any): void;
+  setStyle(key: string, value: any): void;
+  setVariable(key: string, value: any): void;
+  appendChild(child: IComponent): void;
+  prependChild(child: IComponent): void;
+  removeChild(child: IComponent): void;
+  setComponentView(view: string): void;
+  readonly theme: IVariables;
+  readonly yaml: IYaml;
 }
 
-export interface IOptions<T, P> {
+export interface IOptions {
   componentName: string;
-  componentView?: React.FC<any>;
+  componentView: string;
   control?: string;
   variant?: string;
-  variables?: IVariables<P>;
-  properties?: IProperties<T>;
-  children?: IComponent<any, any>[];
+  properties?: IProperties;
+  styles?: IStyles;
+  variables?: IVariables;
+  children?: IComponent[];
 }

@@ -53,8 +53,9 @@ interface LabelProperties {
 }
 
 export function createLabel(componentName: string) {
-  const component = new Component<LabelProperties>({
+  const component = new Component({
     componentName: componentName,
+    componentView: 'div',
     control: 'Label',
   });
 

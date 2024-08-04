@@ -26,7 +26,9 @@ export function createProfileCard() {
   profileContainer.setProperty('RadiusBottomRight', '0');
   profileContainer.setProperty('RadiusTopLeft', '0');
   profileContainer.setProperty('RadiusTopRight', '0');
-  profileContainer.setComponentView(ProfileContainer);
+  profileContainer.setComponentView('div');
+  profileContainer.setStyle('display', 'flex');
+  profileContainer.setStyle('alignItems', 'center');
 
   // Profile Avatar
   const profileAvatar = createContainer('Profile_Avatar');
@@ -41,13 +43,23 @@ export function createProfileCard() {
   profileAvatar.setProperty('RadiusTopLeft', '35');
   profileAvatar.setProperty('RadiusTopRight', '35');
   profileAvatar.setProperty('Width', '35');
-  profileAvatar.setComponentView(ProfileAvatar);
+  profileAvatar.setComponentView('div');
+  profileAvatar.setStyle('width', '35px');
+  profileAvatar.setStyle('height', '35px');
+  profileAvatar.setStyle('border', '2px solid black');
+  profileAvatar.setStyle('borderRadius', '50%');
+  profileAvatar.setStyle('display', 'flex');
+  profileAvatar.setStyle('justifyContent', 'center');
+  profileAvatar.setStyle('alignItems', 'center');
 
   const profileImage = createImage('Profile_Image');
   profileImage.setProperty('Image', 'User().Image');
   profileImage.setProperty('Height', 'Parent.Height');
   profileImage.setProperty('Width', 'Parent.Width');
-  profileImage.setComponentView(ProfileImage);
+  profileImage.setComponentView('div');
+  profileImage.setStyle('width', '100%');
+  profileImage.setStyle('height', '100%');
+  profileImage.setStyle('borderRadius', '50%');
   profileAvatar.appendChild(profileImage);
 
   // Profile Label
@@ -64,7 +76,10 @@ export function createProfileCard() {
   profileLabel.setProperty('PaddingRight', '0');
   profileLabel.setProperty('Size', '8');
   profileLabel.setProperty('Width', 'Parent.Width - Self.X');
-  profileLabel.setComponentView(ProfileLabel);
+  profileLabel.setComponentView('div');
+  profileLabel.setStyle('fontSize', '12px');
+  profileLabel.setStyle('color', '#333');
+  profileLabel.setStyle('marginLeft', '10px');
 
   profileContainer.appendChild(profileAvatar);
   profileContainer.appendChild(profileLabel);

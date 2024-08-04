@@ -29,8 +29,9 @@ interface ContainerProperties {
 }
 
 export function createContainer<P>(componentName: string) {
-  return new Component<ContainerProperties, P>({
+  return new Component({
     componentName: componentName,
+    componentView: 'div',
     control: 'GroupContainer',
     variant: 'manualLayoutContainer',
   });

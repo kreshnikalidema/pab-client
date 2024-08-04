@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Component } from 'libraries/power-apps';
-import { useDrop } from 'react-dnd';
+import { Image } from './image';
+import { View } from './view';
+import { Label } from './label';
+import {Region} from "./region"
 
 interface WorkspaceContentProps {
   container: Component;
@@ -11,27 +14,16 @@ interface DroppedItem {
   fn: () => Component;
 }
 
+const elements = {
+  region: Region,
+  div: View,
+  image: Image,
+  label: Label,
+};
+
 export const WorkspaceContent: React.FC<WorkspaceContentProps> = observer(
   (props) => {
     const { container } = props;
-
-    const variables = container.theme;
-
-    const [{ isOver }, drop] = useDrop({
-      accept: 'COMPONENT',
-      drop: (item: any, monitor) => {
-        if (monitor.didDrop()) {
-          return;
-        }
-
-        if (item.fn) {
-          container.appendChild(item.fn());
-        }
-      },
-      collect: (monitor) => ({
-        isOver: monitor.isOver(),
-      }),
-    });
 
     const renderChildren = React.useCallback(
       (childContainer: Component) => (
@@ -43,17 +35,13 @@ export const WorkspaceContent: React.FC<WorkspaceContentProps> = observer(
       []
     );
 
-    if (
-      container.control === 'Image' ||
-      container.control === 'Classic/TextInput'
-    ) {
-      return <container.View variables={variables} ref={drop} />;
-    }
+    // @ts-ignore
+    const TmpComponent = elements[container.componentView];
 
     return (
-      <container.View variables={variables} ref={drop}>
+      <TmpComponent container={container}>
         {container.children.map(renderChildren)}
-      </container.View>
+      </TmpComponent>
     );
   }
 );

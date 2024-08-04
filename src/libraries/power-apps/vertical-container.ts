@@ -33,8 +33,9 @@ interface VerticalContainerProperties {
 }
 
 export function createVerticalContainer<P>(componentName: string) {
-  return new Component<VerticalContainerProperties, P>({
+  return new Component({
     componentName: componentName,
+    componentView: 'div',
     control: 'GroupContainer',
     variant: 'verticalAutoLayoutContainer',
   });

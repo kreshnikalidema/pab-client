@@ -25,8 +25,13 @@ export function createSearchbox() {
   searchboxContainer.setProperty('Width', '250');
   searchboxContainer.setProperty('X', '40');
   searchboxContainer.setProperty('Y', '(Parent.Height - Self.Height)/2');
-
-  searchboxContainer.setComponentView(SearchboxContainer);
+  searchboxContainer.setComponentView('div');
+  searchboxContainer.setStyle('display', 'flex');
+  searchboxContainer.setStyle('alignItems', 'center');
+  searchboxContainer.setStyle('border', '1px solid rgba(32, 54, 71, 1)');
+  searchboxContainer.setStyle('borderRadius', '4px');
+  searchboxContainer.setStyle('padding', '5px');
+  searchboxContainer.setStyle('backgroundColor', 'white');
 
   // Searchbox Image
   const searchboxImage = createImage('Searchbox_Image');
@@ -55,7 +60,10 @@ export function createSearchbox() {
   searchboxImage.setProperty('X', '10');
   searchboxImage.setProperty('Y', '(Parent.Height - Self.Height)/2');
 
-  searchboxImage.setComponentView(SearchboxImage);
+  searchboxImage.setComponentView('div');
+  searchboxImage.setStyle('width', '20px');
+  searchboxImage.setStyle('height', '20px');
+  searchboxImage.setStyle('marginRight', '10px');
 
   // Searchbox Rectangle
   const searchboxRectangle = createRectangle('Searchbox_Rectangle');
@@ -72,7 +80,7 @@ export function createSearchbox() {
   searchboxRectangle.setProperty('Width', 'Parent.Width');
   searchboxRectangle.setProperty('Y', 'Parent.Height - Self.Height');
 
-  searchboxRectangle.setComponentView(SearchboxRectangle);
+  searchboxRectangle.setComponentView('div');
 
   // Searchbox TextInput
   const searchboxTextInput = createTextInput('Searchbox_TextInput');
@@ -98,8 +106,14 @@ export function createSearchbox() {
   searchboxTextInput.setProperty('Width', 'Parent.Width');
   searchboxTextInput.setProperty('X', '0');
   searchboxTextInput.setProperty('Y', '0');
-
-  searchboxTextInput.setComponentView(SearchboxTextinput);
+  searchboxTextInput.setComponentView('div');
+  searchboxTextInput.setStyle('border', 'none');
+  searchboxTextInput.setStyle('outline', 'none');
+  searchboxTextInput.setStyle('flex', '1');
+  searchboxTextInput.setStyle('padding', '5px');
+  searchboxTextInput.setStyle('fontSize', '16px');
+  searchboxTextInput.setStyle('color', '#203647');
+  searchboxTextInput.setStyle('backgroundColor', 'transparent');
 
   searchboxContainer.appendChild(searchboxImage);
   searchboxContainer.appendChild(searchboxRectangle);

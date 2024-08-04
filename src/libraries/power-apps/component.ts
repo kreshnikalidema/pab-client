@@ -1,22 +1,31 @@
 import { makeAutoObservable } from 'mobx';
-import { toYaml, toTheme, Noop } from './helpers';
-import { IComponent, IProperties, IVariables, IOptions, IYaml } from './types';
+import { toYaml, toTheme } from './helpers';
+import {
+  IComponent,
+  IProperties,
+  IVariables,
+  IStyles,
+  IOptions,
+  IYaml,
+} from './types';
 
-export class Component<T = unknown, P = unknown> implements IComponent<T, P> {
+export class Component implements IComponent {
   componentName: string;
-  componentView?: React.FC<any>;
+  componentView: string;
   control?: string;
   variant?: string;
-  properties: IProperties<T>;
-  variables: IVariables<P>;
-  children: IComponent<any, any>[];
+  properties: IProperties;
+  styles: IStyles;
+  variables: IVariables;
+  children: IComponent[];
 
-  constructor(options: IOptions<T, P>) {
+  constructor(options: IOptions) {
     this.componentName = options.componentName;
     this.componentView = options.componentView;
     this.control = options.control;
     this.variant = options.variant;
     this.properties = options.properties || {};
+    this.styles = options.styles || {};
     this.variables = options.variables || {};
     this.children = options.children || [];
 
@@ -26,39 +35,39 @@ export class Component<T = unknown, P = unknown> implements IComponent<T, P> {
     });
   }
 
-  setProperty<K extends keyof T>(key: K, value: string): void {
-    this.properties[key as keyof T] = `=${value}` as unknown as T[keyof T];
+  setProperty(key: string, value: any): void {
+    this.properties[key] = value;
   }
 
-  setVariable<K extends keyof P>(key: K, value: P[K]): void {
-    this.variables[key as keyof P] = value;
+  setStyle(key: string, value: any): void {
+    this.styles[key] = value;
   }
 
-  appendChild<U, V>(child: IComponent<U, V>): void {
+  setVariable(key: string, value: any): void {
+    this.variables[key] = value;
+  }
+
+  appendChild(child: IComponent): void {
     this.children.push(child);
   }
 
-  prependChild<U, V>(child: IComponent<U, V>): void {
+  prependChild(child: IComponent): void {
     this.children.unshift(child);
   }
 
-  removeChild<U, V>(child: IComponent<U, V>): void {
+  removeChild(child: IComponent): void {
     this.children = this.children.filter((c) => c !== child);
   }
 
-  setComponentView(view: React.FC<any>): void {
+  setComponentView(view: string): void {
     this.componentView = view;
   }
 
-  get theme(): IVariables<P> {
-    return toTheme(this as IComponent<T, P>);
+  get theme(): IVariables {
+    return toTheme(this);
   }
 
-  get yaml(): IYaml<T, P> {
-    return toYaml(this as IComponent<T, P>);
-  }
-
-  get View(): React.FC<any> {
-    return this.componentView ?? Noop;
+  get yaml(): IYaml {
+    return toYaml(this);
   }
 }

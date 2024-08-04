@@ -38,8 +38,9 @@ interface GalleryProperties {
 }
 
 export function createGallery(componentName: string) {
-  return new Component<GalleryProperties>({
+  return new Component({
     componentName: componentName,
+    componentView: 'div',
     control: 'Gallery',
     variant: 'variableTemplateHeightGallery',
   });

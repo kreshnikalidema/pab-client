@@ -20,7 +20,11 @@ export function createLogo() {
   logo.setProperty('PaddingBottom', '0');
   logo.setProperty('PaddingTop', '0');
 
-  logo.setComponentView(LogoImage);
+  logo.setComponentView('div');
+
+  logo.setStyle('height', '30px');
+  logo.setStyle('width', 'auto');
+  logo.setStyle('alignSelf', 'center');
 
   return logo;
 }

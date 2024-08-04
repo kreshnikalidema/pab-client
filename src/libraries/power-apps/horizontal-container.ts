@@ -37,8 +37,9 @@ interface HorizontalContainerProperties {
 }
 
 export function createHorizontalContainer<P>(componentName: string) {
-  return new Component<HorizontalContainerProperties, P>({
+  return new Component({
     componentName: componentName,
+    componentView: 'div',
     control: 'GroupContainer',
     variant: 'horizontalAutoLayoutContainer',
   });
