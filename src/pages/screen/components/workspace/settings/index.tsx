@@ -8,7 +8,9 @@ import {Component} from "helpers/component"
 import { observer } from 'mobx-react-lite';
 
 interface Props {
-  component: Component
+  component: Component;
+  drawerOpen: boolean;
+  onDrawerOpen: (value: boolean) => void
 }
 
 const SettingsButton = styled(IconButton)(({ theme }) => ({
@@ -16,10 +18,10 @@ const SettingsButton = styled(IconButton)(({ theme }) => ({
   top: theme.spacing(1),
   right: theme.spacing(1),
   zIndex: 2,
-  color: 'white',
-  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.grey[800],
+  backgroundColor: theme.palette.grey[200],
   '&:hover': {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: theme.palette.grey[400],
   },
 }));
 
@@ -27,20 +29,20 @@ const SettingsButton = styled(IconButton)(({ theme }) => ({
 
 export const Settings: React.FC<Props> = observer(
   (props) => {
-    const {component} = props
-    const [drawerOpen, setDrawerOpen] = useState(false);
+    const {component, drawerOpen, onDrawerOpen } = props
+    
 
     const handleDrawerOpen = () => {
-      setDrawerOpen(true);
+      onDrawerOpen(true);
     };
   
     const handleDrawerClose = () => {
-      setDrawerOpen(false);
+      onDrawerOpen(false);
     };
   
     return (
       <>
-        <SettingsButton onClick={handleDrawerOpen}>
+        <SettingsButton onClick={handleDrawerOpen} size='small'>
           <SettingsIcon />
         </SettingsButton>
         <GenericDrawer

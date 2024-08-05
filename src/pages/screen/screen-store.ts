@@ -29,7 +29,7 @@ export class ScreenStore {
       variables: {},
       properties: {},
       styles: {
-        backgroundColor: 'red',
+        backgroundColor: '#393939',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',

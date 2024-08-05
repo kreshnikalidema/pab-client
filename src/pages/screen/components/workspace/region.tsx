@@ -49,7 +49,7 @@ const Overlay1 = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   opacity: 1,
   transition: 'opacity 0.3s',
-  border: `1px solid ${theme.palette.primary.main}`,
+  border: `1px dashed #999999`,
 }));
 
 const SettingsButton = styled(IconButton)(({ theme }) => ({
@@ -66,6 +66,8 @@ const SettingsButton = styled(IconButton)(({ theme }) => ({
 
 export const Region: React.FC<WorkspaceContentProps> = observer((props) => {
   const { container, children } = props;
+
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   const [{ isOver }, drop] = useDrop({
     accept: 'COMPONENT',
@@ -84,18 +86,28 @@ export const Region: React.FC<WorkspaceContentProps> = observer((props) => {
     }),
   });
 
+  const onDoubleClickHandler = (e: any) => {
+    // e.stopPropagation();
+    setDrawerOpen(true)
+};
+
+const onDrawerOpen = (value: boolean) => {
+  setDrawerOpen(value)
+};
+  
+
   const styles = {
     ...toJS(container.styles),
     position: 'relative',
   } as any;
 
   return (
-    <div ref={drop} style={styles}>
+    <div ref={drop} style={styles} onDoubleClick={onDoubleClickHandler}>
       <Overlay1>
         <Overlay style={{ opacity: isOver ? 1 : 0 }}>
-          <Typography variant="h4">twice</Typography>
+          <Typography variant="h5" textAlign="center">Drag and drop UI blocks here.</Typography>
         </Overlay>
-        <Settings component={container} />
+        <Settings component={container} drawerOpen={drawerOpen}  onDrawerOpen={onDrawerOpen}/>
       </Overlay1>
       {children}
     </div>
