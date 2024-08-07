@@ -88,13 +88,12 @@ export const Region: React.FC<WorkspaceContentProps> = observer((props) => {
 
   const onDoubleClickHandler = (e: any) => {
     // e.stopPropagation();
-    setDrawerOpen(true)
-};
+    setDrawerOpen(true);
+  };
 
-const onDrawerOpen = (value: boolean) => {
-  setDrawerOpen(value)
-};
-  
+  const onDrawerOpen = (value: boolean) => {
+    setDrawerOpen(value);
+  };
 
   const styles = {
     ...toJS(container.styles),
@@ -105,9 +104,15 @@ const onDrawerOpen = (value: boolean) => {
     <div ref={drop} style={styles} onDoubleClick={onDoubleClickHandler}>
       <Overlay1>
         <Overlay style={{ opacity: isOver ? 1 : 0 }}>
-          <Typography variant="h5" textAlign="center">Drag and drop UI blocks here.</Typography>
+          <Typography variant="h5" textAlign="center">
+            Drag and drop UI blocks here.
+          </Typography>
         </Overlay>
-        <Settings component={container} drawerOpen={drawerOpen}  onDrawerOpen={onDrawerOpen}/>
+        <Settings
+          component={container}
+          drawerOpen={drawerOpen}
+          onDrawerOpen={onDrawerOpen}
+        />
       </Overlay1>
       {children}
     </div>

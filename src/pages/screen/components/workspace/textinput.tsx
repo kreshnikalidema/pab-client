@@ -16,9 +16,7 @@ interface DroppedItem {
 export const TextInput: React.FC<Props> = observer((props) => {
   const { container, children, innerRef } = props;
 
-  const placeholder = container.metadata.placeholder ?? ''
+  const placeholder = container.metadata.placeholder ?? '';
 
-  return (
-    <input style={toJS(container.styles)} placeholder={placeholder} />
-  );
+  return <input style={toJS(container.styles)} placeholder={placeholder} />;
 });

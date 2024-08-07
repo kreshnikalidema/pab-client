@@ -14,8 +14,6 @@ export type Metadata = {
   [key: string]: any;
 };
 
-
-
 export interface YamlCode {
   Control?: string;
   Variant?: string;

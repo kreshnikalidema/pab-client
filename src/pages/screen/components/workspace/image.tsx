@@ -14,9 +14,7 @@ interface DroppedItem {
 export const Image: React.FC<Props> = observer((props) => {
   const { container } = props;
 
-  const src = container.metadata.src ?? 'https://placehold.co/300x100'
+  const src = container.metadata.src ?? 'https://placehold.co/300x100';
 
-  return (
-    <img src={src} style={toJS(container.styles)} />
-  );
+  return <img src={src} style={toJS(container.styles)} />;
 });

@@ -5,7 +5,8 @@ import { Image } from './image';
 import { View } from './view';
 import { Label } from './label';
 import { Region } from './region';
-import { TextInput } from './textinput'
+import { TextInput } from './textinput';
+import { Table } from './table';
 
 interface WorkspaceContentProps {
   container: Component;
@@ -20,7 +21,8 @@ const elements = {
   div: View,
   image: Image,
   label: Label,
-  textinput: TextInput
+  textinput: TextInput,
+  table: Table,
 };
 
 export const WorkspaceContent: React.FC<WorkspaceContentProps> = observer(

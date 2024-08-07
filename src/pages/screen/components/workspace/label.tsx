@@ -15,7 +15,7 @@ interface DroppedItem {
 export const Label: React.FC<Props> = observer((props) => {
   const { container } = props;
 
-  const label = container.metadata.label ?? 'Label'
+  const label = container.metadata.label ?? 'Label';
 
   return <span style={toJS(container.styles)}>{label}</span>;
 });

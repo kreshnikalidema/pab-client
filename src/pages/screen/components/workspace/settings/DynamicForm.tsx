@@ -12,9 +12,14 @@ import {
 import RemoveIcon from '@mui/icons-material/Remove';
 import { observer } from 'mobx-react-lite';
 import { Component } from '@app/helpers/component';
-import { List, ListItem, ListItemText, ListItemSecondaryAction, ListSubheader } from '@mui/material';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  ListSubheader,
+} from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 
 export type Props = {
   component: Component;
@@ -158,7 +163,10 @@ export const DynamicForm: React.FC<Props> = observer((props) => {
           <ListItem key={index}>
             <ListItemText>{item.componentName}</ListItemText>
             <ListItemSecondaryAction>
-              <IconButton edge="end" onClick={() => component.removeChild(item)}>
+              <IconButton
+                edge="end"
+                onClick={() => component.removeChild(item)}
+              >
                 <DeleteIcon />
               </IconButton>
             </ListItemSecondaryAction>
