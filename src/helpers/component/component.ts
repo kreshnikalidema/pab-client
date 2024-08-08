@@ -12,7 +12,7 @@ import {
 
 export class Component implements IComponent {
   componentName: string;
-  componentView: string;
+  componentView?: string;
   control?: string;
   variant?: string;
   variables: Variables;
@@ -43,7 +43,11 @@ export class Component implements IComponent {
   }
 
   setProperty(key: string, value: any): void {
-    this.properties[key] = value;
+    this.properties[key] = `=${value}`;
+  }
+
+  setMetadata(key: string, value: any): void {
+    this.metadata[key] = value;
   }
 
   setStyle(key: string, value: any): void {
@@ -73,4 +77,80 @@ export class Component implements IComponent {
   get yaml(): Yaml {
     return toYaml(this);
   }
+}
+
+export function createContainer(componentName: string) {
+  return new Component({
+    componentName: componentName,
+    componentView: 'region',
+    control: 'GroupContainer',
+    variant: 'manualLayoutContainer',
+  });
+}
+
+export function createHorizontalContainer(componentName: string) {
+  return new Component({
+    componentName: componentName,
+    componentView: 'div',
+    control: 'GroupContainer',
+    variant: 'horizontalAutoLayoutContainer',
+  });
+}
+
+export function createVerticalContainer(componentName: string) {
+  return new Component({
+    componentName: componentName,
+    componentView: 'div',
+    control: 'GroupContainer',
+    variant: 'verticalAutoLayoutContainer',
+  });
+}
+
+export function createImage(componentName: string) {
+  return new Component({
+    componentName: componentName,
+    componentView: 'image',
+    control: 'Image',
+  });
+}
+
+export function createLabel(componentName: string) {
+  return new Component({
+    componentName: componentName,
+    componentView: 'label',
+    control: 'Label',
+  });
+}
+
+export function createButton(componentName: string) {
+  return new Component({
+    componentName: componentName,
+    componentView: 'button',
+    control: 'Classic/Button',
+  });
+}
+
+export function createGallery(componentName: string) {
+  return new Component({
+    componentName: componentName,
+    componentView: 'div',
+    control: 'Gallery',
+    variant: 'variableTemplateHeightGallery',
+  });
+}
+
+export function createRectangle(componentName: string) {
+  return new Component({
+    componentName: componentName,
+    componentView: 'div',
+    control: 'Rectangle',
+  });
+}
+
+export function createTextInput(componentName: string) {
+  return new Component({
+    componentName: componentName,
+    componentView: 'div',
+    control: 'Classic/TextInput',
+  });
 }

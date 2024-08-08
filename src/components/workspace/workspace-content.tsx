@@ -12,10 +12,6 @@ interface WorkspaceContentProps {
   container: Component;
 }
 
-interface DroppedItem {
-  fn: () => Component;
-}
-
 const elements = {
   region: Region,
   div: View,

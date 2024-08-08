@@ -4,16 +4,16 @@ import { Drawer, Box, Typography, Fab, Toolbar } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import { CodeDisplay } from 'components/code-display';
 import { stringify } from 'yaml';
-import { ScreenStore } from '../../screen-store';
+import { Component } from 'helpers/component';
 
 interface InstructionsProps {
-  screenStore: ScreenStore;
+  component: Component;
 }
 
 export const Instructions = observer<InstructionsProps>((props) => {
-  const { screenStore } = props;
+  const { component } = props;
 
-  const container = screenStore.component;
+  const container = component;
 
   const [isOpen, setIsOpen] = useState(false);
 

@@ -2,17 +2,17 @@ import * as React from 'react';
 import { observer } from 'mobx-react-lite';
 import { WorkspaceContainer } from './workspace-container';
 import { WorkspaceContent } from './workspace-content';
-import { ScreenStore } from '../../screen-store';
+import { Component } from 'helpers/component';
 
 interface WorkspaceProps {
-  screenStore: ScreenStore;
+  component: Component;
 }
 
 export const Workspace = observer<WorkspaceProps>((props) => {
-  const { screenStore } = props;
+  const { component } = props;
   return (
     <WorkspaceContainer>
-      <WorkspaceContent container={screenStore.component} />
+      <WorkspaceContent container={component} />
     </WorkspaceContainer>
   );
 });

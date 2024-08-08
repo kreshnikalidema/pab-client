@@ -5,19 +5,14 @@ import { Component } from '@app/helpers/component';
 
 interface Props {
   container: Component;
-  children: any;
-  innerRef: any;
-}
-
-interface DroppedItem {
-  fn: () => Component;
+  children: React.ReactNode;
 }
 
 export const View: React.FC<Props> = observer((props) => {
-  const { container, children, innerRef } = props;
+  const { container, children } = props;
 
   return (
-    <div ref={innerRef} style={toJS(container.styles)}>
+    <div style={toJS(container.styles)}>
       {children}
     </div>
   );

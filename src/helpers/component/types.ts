@@ -27,7 +27,7 @@ export interface Yaml {
 
 export interface IComponent {
   componentName: string;
-  componentView: string;
+  componentView?: string;
   control?: string;
   variant?: string;
   variables: Variables;
@@ -42,18 +42,19 @@ export interface IComponent {
   prependChild(child: IComponent): void;
   removeChild(child: IComponent): void;
   setComponentView(view: string): void;
+  setMetadata(key: string, value: any): void;
   readonly theme: Variables;
   readonly yaml: Yaml;
 }
 
 export interface Options {
   componentName: string;
-  componentView: string;
+  componentView?: string;
   control?: string;
   variant?: string;
-  variables: Variables;
-  properties: Properties;
-  styles: Styles;
+  variables?: Variables;
+  properties?: Properties;
+  styles?: Styles;
   metadata?: Metadata;
   children?: IComponent[];
 }
