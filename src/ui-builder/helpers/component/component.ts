@@ -150,7 +150,7 @@ export function createRectangle(componentName: string) {
 export function createTextInput(componentName: string) {
   return new Component({
     componentName: componentName,
-    componentView: 'div',
+    componentView: 'input',
     control: 'Classic/TextInput',
   });
 }

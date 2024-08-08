@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Component } from './helpers/component';
-import { View } from './components/view/view';
-import { Region } from './components/region/region';
+import { View } from './components/view';
+import { Region } from './components/region';
 import { Image } from './components/image';
 import { Label } from './components/label';
-import { TextInput } from './components/textinput/textinput';
+import { TextInput } from './components/textinput';
 
 interface Props {
   container: Component;
