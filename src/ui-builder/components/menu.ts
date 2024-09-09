@@ -64,7 +64,7 @@ export function createMenu() {
   function createSubmenuItemInner() {
     const component = createContainer('Submenu_Item_Inner');
 
-    component.setComponentView('div');
+    component.setView('div');
 
     component.setProperty('DropShadow', 'DropShadow.None');
     component.setProperty(
@@ -90,7 +90,7 @@ export function createMenu() {
   function createSubmenuItemOuter() {
     const component = createContainer('Submenu_Item_Outer');
 
-    component.setComponentView('div');
+    component.setView('div');
 
     component.setProperty('DropShadow', 'DropShadow.None');
     component.setProperty('Height', '50');
@@ -108,7 +108,7 @@ export function createMenu() {
   function createSubmenu() {
     const component = createGallery('Submenu');
 
-    component.setComponentView('div');
+    component.setView('div');
 
     component.setProperty('Items', 'ThisItem.Submenu');
     component.setProperty(
@@ -173,7 +173,7 @@ export function createMenu() {
   function createMenuItemInner() {
     const component = createContainer('Menu_Item_Inner');
 
-    component.setComponentView('div');
+    component.setView('div');
 
     component.setProperty('DropShadow', 'DropShadow.None');
     component.setProperty(
@@ -199,7 +199,7 @@ export function createMenu() {
   function createMenuItemOuter() {
     const component = createContainer('Menu_Item_Outer');
 
-    component.setComponentView('div');
+    component.setView('div');
 
     component.setProperty('DropShadow', 'DropShadow.None');
     component.setProperty('Height', '50');

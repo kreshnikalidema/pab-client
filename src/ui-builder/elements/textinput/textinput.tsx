@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
-import { Component } from 'ui-builder/helpers/component';
+import { Component } from '@/shared/store/component';
 
 interface Props {
   container: Component;

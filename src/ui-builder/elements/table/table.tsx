@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer } from 'mobx-react-lite';
-import { Component } from '../../helpers/component';
+import { Component } from '@/shared/store/component';
 import { Placeholder } from './Placeholder';
 
 interface Props {

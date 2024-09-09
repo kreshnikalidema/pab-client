@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
-import { Component } from '../../helpers/component';
+import { Component } from '@/shared/store/component';
 import { useDrop } from 'react-dnd';
 import { Box, styled } from '@mui/material';
 import { Typography } from '@mui/material';

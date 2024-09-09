@@ -5,7 +5,7 @@ import { createLabel } from '../helpers/component';
 export function createProfile() {
   const component = createContainer('Profile');
 
-  component.setComponentView('div');
+  component.setView('div');
 
   component.setProperty('DropShadow', 'DropShadow.None');
   component.setProperty('FillPortions', '0');
@@ -43,7 +43,7 @@ export function createProfile() {
   function createProfileAvatar() {
     const component = createContainer('Profile_Avatar');
 
-    component.setComponentView('div');
+    component.setView('div');
 
     component.setProperty('AlignInContainer', 'AlignInContainer.Center');
     component.setProperty('BorderColor', 'RGBA(115,131,176,1)');

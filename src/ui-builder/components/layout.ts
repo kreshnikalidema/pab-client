@@ -4,7 +4,7 @@ import { createContainer } from '../helpers/component';
 export function createLayout() {
   const component = createHorizontalContainer('Layout_Container');
 
-  component.setComponentView('div');
+  component.setView('div');
 
   component.setProperty('DropShadow', 'DropShadow.None');
   component.setProperty('BorderStyle', 'BorderStyle.None');
@@ -25,7 +25,7 @@ export function createLayout() {
   function createLayoutLeft() {
     const component = createContainer('Layout_Left');
 
-    component.setComponentView('region');
+    component.setView('region');
 
     component.setProperty(
       'AlignInContainer',
@@ -49,7 +49,7 @@ export function createLayout() {
   function createLayoutBody() {
     const component = createContainer('Layout_Body');
 
-    component.setComponentView('region');
+    component.setView('region');
 
     component.setProperty(
       'AlignInContainer',

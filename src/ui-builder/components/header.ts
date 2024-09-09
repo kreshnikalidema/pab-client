@@ -91,7 +91,7 @@ export function createHeader() {
     component.setStyle('flex', '1');
     component.setStyle('display', 'flex');
     component.setStyle('alignItems', 'center');
-    component.setStyle('padding', '0 20px');
+    component.setStyle('padding', '0 {{Theme.paddingY}}px');
     component.setStyle('justifyContent', 'flex-end');
 
     return component;

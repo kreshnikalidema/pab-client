@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { observer } from 'mobx-react-lite';
-import { Component } from '../../helpers/component';
+import { Component } from '@/shared/store/component';
 import {
   List,
   ListItem,
@@ -38,7 +38,7 @@ export const DynamicForm: React.FC<Props> = observer((props) => {
 
   const { control, handleSubmit, register, reset } = useForm<FormValues>({
     defaultValues: {
-      componentName: component.componentName,
+      componentName: component.name,
       control: component.control ?? '',
       variant: component.variant ?? '',
       properties: [],
@@ -161,7 +161,7 @@ export const DynamicForm: React.FC<Props> = observer((props) => {
       <List subheader={<ListSubheader>Children</ListSubheader>}>
         {component.children.map((item, index) => (
           <ListItem key={index}>
-            <ListItemText>{item.componentName}</ListItemText>
+            <ListItemText>{item.name}</ListItemText>
             <ListItemSecondaryAction>
               <IconButton
                 edge="end"

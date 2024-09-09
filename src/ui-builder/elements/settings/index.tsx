@@ -1,10 +1,10 @@
-import React, { useState, ReactNode } from 'react';
+import * as React from 'react';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { styled } from '@mui/material';
 import { GenericDrawer } from './GenericDrawer';
 import { IconButton } from '@mui/material';
 import { DynamicForm } from './DynamicForm';
-import { Component } from '../../helpers/component';
+import { Component } from '@/shared/store/component';
 import { observer } from 'mobx-react-lite';
 
 interface Props {
