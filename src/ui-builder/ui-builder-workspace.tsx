@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Box, styled } from '@mui/material';
+import { Component } from '@/shared/store/component';
 import { UIBuilderRecursive } from './ui-builder-recursive';
-import { Component } from './helpers/component';
 
 interface Props {
   component: Component;

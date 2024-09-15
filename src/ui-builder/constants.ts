@@ -1,6 +1,6 @@
 import * as Icon from '@mui/icons-material';
-import { Component } from './helpers/component';
-import { createLayout } from './blocks/layout';
+import { Component } from '@/shared/store/component';
+import { Label } from './elements/label';
 import { createSidebar } from './blocks/sidebar';
 
 interface Item {
@@ -23,8 +23,8 @@ export const blocks: Item[] = [
 ];
 
 export const component = new Component({
-  componentName: '__Root__',
-  componentView: 'region',
+  name: '__Root__',
+  view: () => null,
   variables: {},
   properties: {},
   styles: {

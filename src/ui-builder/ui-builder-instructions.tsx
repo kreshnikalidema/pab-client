@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Drawer, Box, Typography, Fab, Toolbar } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
-import { CodeDisplay } from 'core/components/code-display';
+import { CodeDisplay } from '@/shared/components/code-display';
 import { stringify } from 'yaml';
-import { Component } from './helpers/component';
+import { Component } from '@/shared/store/component';
 
 interface Props {
   component: Component;

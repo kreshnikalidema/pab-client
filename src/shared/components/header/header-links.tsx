@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Box } from '@mui/material';
+import { Typography } from '@mui/material';
 import { HeaderLink } from './header-link';
 
 export const HeaderLinks: React.FC = () => {

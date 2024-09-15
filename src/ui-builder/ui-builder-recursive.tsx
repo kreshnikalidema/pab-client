@@ -1,23 +1,10 @@
 import * as React from 'react';
 import { observer } from 'mobx-react-lite';
-import { Component } from './helpers/component';
-import { View } from './components/view';
-import { Region } from './components/region';
-import { Image } from './components/image';
-import { Label } from './components/label';
-import { TextInput } from './components/textinput';
+import { Component } from '@/shared/store/component';
 
 interface Props {
   container: Component;
 }
-
-const elements: any = {
-  div: View,
-  region: Region,
-  image: Image,
-  label: Label,
-  textinput: TextInput,
-};
 
 export const UIBuilderRecursive: React.FC<Props> = observer((props) => {
   const { container } = props;
@@ -26,21 +13,15 @@ export const UIBuilderRecursive: React.FC<Props> = observer((props) => {
     (childContainer: Component) => (
       <UIBuilderRecursive
         container={childContainer}
-        key={childContainer.componentName}
+        key={childContainer.name}
       />
     ),
     []
   );
 
-  if (container.componentView && elements[container.componentView]) {
-    const Component = elements[container.componentView];
-
-    return (
-      <Component container={container}>
-        {container.children.map(renderChildren)}
-      </Component>
-    );
-  }
-
-  return null;
+  return (
+    <container.view container={container}>
+      {container.children.map(renderChildren)}
+    </container.view>
+  );
 });
